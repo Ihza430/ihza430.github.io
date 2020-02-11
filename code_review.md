@@ -1,6 +1,6 @@
 ## Code Review of Artifacts
 
-### [Home](https://ihza430.github.io)
+### [Home](https://ihza430.github.io)  [Software Engineering & Design](/software_design.html)
 
 This is the video for the code review of the three artifacts. It includes a brief explanation of each one and their following enhancements.
 
