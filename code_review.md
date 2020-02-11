@@ -1,6 +1,6 @@
 ## Code Review of Artifacts
 
-### [Home](https://ihza430.github.io)  | [Software Engineering & Design](/software_design.html) | [Data Structures & Algorithms](/data_structures.html) | [Databases](/databases.html)
+### [Home](https://ihza430.github.io)  | [Code Review](/code_review.html) | [Software Engineering & Design](/software_design.html) | [Data Structures & Algorithms](/data_structures.html) | [Databases](/databases.html)
 
 This is the video for the code review of the three artifacts. It includes a brief explanation of each one and their following enhancements.
 
