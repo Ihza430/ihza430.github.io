@@ -1,4 +1,4 @@
-[Code Review](../code_review.md)
-[Software Engineering & Design](../software_design.md)
-[Data Structures & Algorithms](../data_structures.md)
-[Databases](../databases.md)
+[Code Review](/code_review.html)
+[Software Engineering & Design](/software_design.html)
+[Data Structures & Algorithms](/data_structures.html)
+[Databases](/databases.html)
