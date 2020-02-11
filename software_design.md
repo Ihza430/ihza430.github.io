@@ -49,9 +49,9 @@ Porter, J. (2006, November 14). The Freedom of Fast Iterations: How Netflix Desi
 
 ```
 public class App {
-	private static List<String> mainMenu = Arrays.asList("", "Main Menu", "Please select from the following options",
-			"1 Print Patient List", "2 Print Doctor List", "3 Add a Doctor", "4 Add a Patient", "5 Medical Records",
-			"6 Search for Allergies", "0 to Exit");
+	private static List<String> mainMenu = Arrays.asList("", "Main Menu", "Please select from the following
+			options", "1 Print Patient List", "2 Print Doctor List", "3 Add a Doctor", "4 Add a 
+			Patient", "5 Medical Records","6 Search for Allergies", "0 to Exit");
   
   public static void main(String[] args) {
 		//Created for testing purposes password is "Open"
@@ -82,11 +82,13 @@ public class App {
 				switch (input) {
 				case 1:
 					//Get all patients
-					MedicalRecordService.getReference().getAllPatients().forEach(System.out::println);
+					MedicalRecordService.getReference().getAllPatients().forEach
+					(System.out::println);
 					break;
 				case 2:
 					//Get all doctors
-					DoctorService.getReference().getAllDoctors().forEach(System.out::println);
+					DoctorService.getReference().getAllDoctors().forEach
+					(System.out::println);
 					break;
 				case 3:
 					//add doctor
@@ -102,7 +104,8 @@ public class App {
 					break;
 				case 6:
 					//get patients with allergies
-					medicalRecordPrompt.findAllPatientsWithAllergy(scanner).forEach(System.out::println);
+					medicalRecordPrompt.findAllPatientsWithAllergy(scanner).
+					forEach(System.out::println);
 					break;
 				case 0:
 					//exiting system
@@ -129,10 +132,12 @@ public class App {
 
 			if (addDoctor) {
 				//adding doctor
-				personAdded = DoctorService.getReference().addDoctor(response.getOne(), response.getTwo());
+				personAdded = DoctorService.getReference().addDoctor(response.getOne(), 
+				response.getTwo());
 			} else {
 				//adding patient
-				personAdded = MedicalRescordService.getReference().addPatient(response.getOne(), response.getTwo());
+				personAdded = MedicalRescordService.getReference().addPatient
+				(response.getOne(), response.getTwo());
 			}
 
 			if (personAdded) {
@@ -141,7 +146,8 @@ public class App {
 				System.out.println(person + " " + response.getOne() + " Could not be added\n");
 			}
 			System.out.println(
-					"Would you like to add another " + person + "?\n 1 for Yes\n 0 To return to the Main Menu");
+					"Would you like to add another " + person + "?\n 1 for Yes\n 0 
+					To return to the Main Menu");
 			input = scanner.nextInt();
 		}
 	}
