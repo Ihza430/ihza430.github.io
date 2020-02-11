@@ -49,120 +49,122 @@ Porter, J. (2006, November 14). The Freedom of Fast Iterations: How Netflix Desi
 
 ```
 public class App {
-	private static List<String> mainMenu = Arrays.asList("", "Main Menu",
-			"Please select from the following options", "1 Print 
-			Patient List", "2 Print Doctor List", "3 Add a Doctor", 
-			"4 Add a Patient", "5 Medical Records","6 Search for 
-			Allergies", "0 to Exit");
+	private static List<String> mainMenu = Arrays.asList
+		("", "Main Menu","Please select from the following 
+		options", "1 Print Patient List", "2 Print 
+		Doctor List", "3 Add a Doctor", "4 Add a Patient", 
+		"5 Medical Records","6 Search for Allergies", "0 to Exit");
   
   public static void main(String[] args) {
-		//Created for testing purposes password is "Open"
-		Employee employee = new Employee("Mike", "1111");
-		//Read console input
-		Scanner scanner = new Scanner(System.in);
-		scanner.useDelimiter(System.getProperty("line.separator"));
-		int passwordAttempts = 3;
-		String password = null;
-		boolean loginSuccess = false;
+	//Created for testing purposes password is "Open"
+	Employee employee = new Employee("Mike", "1111");
+	//Read console input
+	Scanner scanner = new Scanner(System.in);
+	scanner.useDelimiter(System.getProperty("line.separator"));
+	
+	int passwordAttempts = 3;
+	String password = null;
+	boolean loginSuccess = false;
 		
-		//Login
-		while (passwordAttempts > 0 && !loginSuccess) {
-			System.out.println("Login Enter Password");
-			password = scanner.next();
-			loginSuccess = employee.getPassword().equals(password);
-			passwordAttepts--;
+	//Login
+	while (passwordAttempts > 0 && !loginSuccess) {
+		System.out.println("Login Enter Password");
+		password = scanner.next();
+		loginSuccess = employee.getPassword().equals(password);
+		passwordAttepts--;
 		}
 
-		if (loginSuccess) {
-			MedicalRecordPrompt medicalRecordPrompt = new 
-			MedicalRecordPrompt();
-			int input = -1;
-			System.out.println("Welcome to Mercy Hospital System");
-			while (input != 0) {
-				mainMenu.stream().forEach(System.out::println);
-				input = scanner.nextInt();
-
-				switch (input) {
-				case 1:
-					//Get all patients
-					MedicalRecordService.getReference().
-					getAllPatients().forEach
-					(System.out::println);
-					break;
-				case 2:
-					//Get all doctors
-					DoctorService.getReference().getAllDoctors().
-					forEach
-					(System.out::println);
-					break;
-				case 3:
-					//add doctor
-					addPerson(true, scanner);
-					break;
-				case 4:
-					//add patient
-					addPerson(false, scanner);
-					break;
-				case 5:
-					//direct to medical prompt
-					medicalRecordPrompt.mainPrompt(scanner);
-					break;
-				case 6:
-					//get patients with allergies
-					medicalRecordPrompt.findAllPatientsWithAllergy
-					(scanner).
-					forEach(System.out::println);
-					break;
-				case 0:
-					//exiting system
-					System.out.println("Good bye!");
-					break;
-				default:
-					break;
-				}
-			}
-			scanner.close();
-		}else{
-			System.out.println("Invalid Password after 3 tries");
-		}
-	}
-
-	//functionality for adding doctor or patient
-	private static void addPerson(boolean addDoctor, Scanner scanner) {
+	if (loginSuccess) {
+		MedicalRecordPrompt medicalRecordPrompt = new 
+		MedicalRecordPrompt();
+		
 		int input = -1;
-		String person = addDoctor ? "Doctor" : "Patient";
-
+		System.out.println("Welcome to Mercy Hospital System");
 		while (input != 0) {
-			Pair response = MenuUtil.createTwoItemMenu(scanner, 
-			"Enter Name:", "Enter ID:");
-			boolean personAdded = false;
-
-			if (addDoctor) {
-				//adding doctor
-				personAdded = DoctorService.getReference().addDoctor
-				(response.getOne(), 
-				response.getTwo());
-			} else {
-				//adding patient
-				personAdded = MedicalRescordService.getReference().
-				addPatient
-				(response.getOne(), response.getTwo());
-			}
-
-			if (personAdded) {
-				System.out.println(person + " " + response.getOne()
-				+ " was succesfully added\n");
-			} else {
-				System.out.println(person + " " + response.getOne()
-				+ " Could not be added\n");
-			}
-			System.out.println(
-					"Would you like to add another " + person
-					+ "?\n 1 for Yes\n 0 
-					To return to the Main Menu");
+			mainMenu.stream().forEach(System.out::println);
 			input = scanner.nextInt();
+
+			switch (input) {
+			case 1:
+				//Get all patients
+				MedicalRecordService.getReference().
+					getAllPatients().forEach
+				(System.out::println);
+				break;
+			case 2:
+				//Get all doctors
+				DoctorService.getReference().getAllDoctors().
+				forEach
+				(System.out::println);
+				break;
+			case 3:
+				//add doctor
+				addPerson(true, scanner);
+				break;
+			case 4:
+				//add patient
+				addPerson(false, scanner);
+				break;
+			case 5:
+				//direct to medical prompt
+				medicalRecordPrompt.mainPrompt(scanner);
+				break;
+			case 6:
+				//get patients with allergies
+				medicalRecordPrompt.findAllPatientsWithAllergy
+				(scanner).
+				forEach(System.out::println);
+				break;
+			case 0:
+				//exiting system
+				System.out.println("Good bye!");
+				break;
+			default:
+				break;
+			}
 		}
+		scanner.close();
+	}else{
+		System.out.println("Invalid Password after 3 tries");
 	}
+}
+
+//functionality for adding doctor or patient
+private static void addPerson(boolean addDoctor, Scanner scanner) {
+	int input = -1;
+	String person = addDoctor ? "Doctor" : "Patient";
+
+	while (input != 0) {
+		Pair response = MenuUtil.createTwoItemMenu(scanner, 
+		"Enter Name:", "Enter ID:");
+		boolean personAdded = false;
+
+		if (addDoctor) {
+			//adding doctor
+			personAdded = DoctorService.getReference().addDoctor
+			(response.getOne(), 
+			response.getTwo());
+		} else {
+			//adding patient
+			personAdded = MedicalRescordService.getReference().
+			addPatient
+			(response.getOne(), response.getTwo());
+		}
+
+		if (personAdded) {
+			System.out.println(person + " " + response.getOne()
+			+ " was succesfully added\n");
+		} else {
+			System.out.println(person + " " + response.getOne()
+			+ " Could not be added\n");
+		}
+		System.out.println(
+				"Would you like to add another " + person
+				+ "?\n 1 for Yes\n 0 
+				To return to the Main Menu");
+		input = scanner.nextInt();
+	}
+}
 }
 ```
 
