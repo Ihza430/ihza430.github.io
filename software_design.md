@@ -1,13 +1,16 @@
 # Software Engineering and Design
 
 ### [Home](https://ihza430.github.io)  | [Code Review](/code_review.html) | [Software Engineering & Design](/software_design.html) | [Data Structures & Algorithms](/data_structures.html) | [Databases](/databases.html)
+
 ---
 - [Artifact Narrative](#an)
 - [Enhancement](#en)
+- [Main.cpp](#mc)
 ---
 
 <a name="an"></a>
 ## Narrative
+
 
 The artifact I chose is a combination of final projects from CS 250: Software Development Lifecycle, IT 315: Object Oriented Analysis and Design, and CS 320: Software Testing, Automation, and Quality. The code part is directly from CS 320: Software Testing, Automation, and Quality. It was created October 2019. This artifact showcased the different testing methods done on a code for a medical application in Java. As for the other two final projects, I will take aspects of them and show the process of software design. CS 250: Software Development Lifecycle was created on June 2018. It showed the process of Agile development and the roles that are within it. IT 315: Object Oriented Analysis and Design was created on March 2019. It showed the different designs to help establish and organize the client requirements for an app to aid developers. This included sequence and use case diagrams. 
   
@@ -19,6 +22,7 @@ Reflecting on the process of enhancing this artifact, there were many things to 
 
 <a name="en"></a>
 ## Enhancement
+
 
 Agile development helps solve many of these problems. The basic method is to work in iterations. Each individual task will go through the whole cycle from planning to developing all the way to testing. This allows for the requirements of a project to be flexible and because of this, communication is a must between the client and the team. For Agile development to be successfully implemented, there are some key features to consider. The first are the different roles involved which are the scrum master, product owner, tester, and developer. The second are phases within the Agile development. For this scenario, a local hospital has hired the company (myself) to create a medical application. Each role will be part of each phase but at certain phases some roles will become more prominent. 
 
@@ -42,7 +46,10 @@ Cobb, C. G. (2015-01-26). The Project Manager's Guide to Mastering Agile: Princi
 
 Porter, J. (2006, November 14). The Freedom of Fast Iterations: How Netflix Designs a Winning Web Site. Retrieved from https://articles.uie.com/fast_iterations
 
+<a name="mc"></a>
 ## Main.app
+
+
 ```
 public class App {
 	private static List<String> mainMenu = Arrays.asList("", "Main Menu", "Please select from the following options",
