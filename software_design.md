@@ -49,9 +49,11 @@ Porter, J. (2006, November 14). The Freedom of Fast Iterations: How Netflix Desi
 
 ```
 public class App {
-	private static List<String> mainMenu = Arrays.asList("", "Main Menu", "Please select from the following
-			options", "1 Print Patient List", "2 Print Doctor List", "3 Add a Doctor", "4 Add a 
-			Patient", "5 Medical Records","6 Search for Allergies", "0 to Exit");
+	private static List<String> mainMenu = Arrays.asList("", "Main Menu",
+			"Please select from the following options", "1 Print 
+			Patient List", "2 Print Doctor List", "3 Add a Doctor", 
+			"4 Add a Patient", "5 Medical Records","6 Search for 
+			Allergies", "0 to Exit");
   
   public static void main(String[] args) {
 		//Created for testing purposes password is "Open"
@@ -72,7 +74,8 @@ public class App {
 		}
 
 		if (loginSuccess) {
-			MedicalRecordPrompt medicalRecordPrompt = new MedicalRecordPrompt();
+			MedicalRecordPrompt medicalRecordPrompt = new 
+			MedicalRecordPrompt();
 			int input = -1;
 			System.out.println("Welcome to Mercy Hospital System");
 			while (input != 0) {
@@ -82,12 +85,14 @@ public class App {
 				switch (input) {
 				case 1:
 					//Get all patients
-					MedicalRecordService.getReference().getAllPatients().forEach
+					MedicalRecordService.getReference().
+					getAllPatients().forEach
 					(System.out::println);
 					break;
 				case 2:
 					//Get all doctors
-					DoctorService.getReference().getAllDoctors().forEach
+					DoctorService.getReference().getAllDoctors().
+					forEach
 					(System.out::println);
 					break;
 				case 3:
@@ -104,7 +109,8 @@ public class App {
 					break;
 				case 6:
 					//get patients with allergies
-					medicalRecordPrompt.findAllPatientsWithAllergy(scanner).
+					medicalRecordPrompt.findAllPatientsWithAllergy
+					(scanner).
 					forEach(System.out::println);
 					break;
 				case 0:
@@ -127,26 +133,32 @@ public class App {
 		String person = addDoctor ? "Doctor" : "Patient";
 
 		while (input != 0) {
-			Pair response = MenuUtil.createTwoItemMenu(scanner, "Enter Name:", "Enter ID:");
+			Pair response = MenuUtil.createTwoItemMenu(scanner, 
+			"Enter Name:", "Enter ID:");
 			boolean personAdded = false;
 
 			if (addDoctor) {
 				//adding doctor
-				personAdded = DoctorService.getReference().addDoctor(response.getOne(), 
+				personAdded = DoctorService.getReference().addDoctor
+				(response.getOne(), 
 				response.getTwo());
 			} else {
 				//adding patient
-				personAdded = MedicalRescordService.getReference().addPatient
+				personAdded = MedicalRescordService.getReference().
+				addPatient
 				(response.getOne(), response.getTwo());
 			}
 
 			if (personAdded) {
-				System.out.println(person + " " + response.getOne() + " was succesfully added\n");
+				System.out.println(person + " " + response.getOne()
+				+ " was succesfully added\n");
 			} else {
-				System.out.println(person + " " + response.getOne() + " Could not be added\n");
+				System.out.println(person + " " + response.getOne()
+				+ " Could not be added\n");
 			}
 			System.out.println(
-					"Would you like to add another " + person + "?\n 1 for Yes\n 0 
+					"Would you like to add another " + person
+					+ "?\n 1 for Yes\n 0 
 					To return to the Main Menu");
 			input = scanner.nextInt();
 		}
