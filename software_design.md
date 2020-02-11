@@ -93,7 +93,8 @@ public class App {
 				break;
 			case 2:
 				//Get all doctors
-				DoctorService.getReference().getAllDoctors().
+				DoctorService.getReference().
+				getAllDoctors().
 				forEach
 				(System.out::println);
 				break;
@@ -111,7 +112,8 @@ public class App {
 				break;
 			case 6:
 				//get patients with allergies
-				medicalRecordPrompt.findAllPatientsWithAllergy
+				medicalRecordPrompt.
+				findAllPatientsWithAllergy
 				(scanner).
 				forEach(System.out::println);
 				break;
