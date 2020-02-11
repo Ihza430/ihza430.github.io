@@ -1,6 +1,6 @@
 # Software Engineering and Design
 
-## [Home}(https://ihza430.github.io)
+## [Home](https://ihza430.github.io)
 ---
 - [Artifact Narrative](#an)
 - [Enhancement](#en)
