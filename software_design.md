@@ -176,14 +176,14 @@ private static void addPerson(boolean addDoctor, Scanner scanner) {
 <a name="mo"></a>
 ## Models
 
-1. [Allergy](/software/models/allergy.html)
-2. [Doctor](/software/models/doctor.html)
-3. [Employee](/software/models/employee.html)
-4. [Medical Record](/software/models/medicalrecord.html)
-5. [Medication](/software/models/medication.html)
-6. [Patient](/software/models/patient.html)
-7. [Patient History](/software/models/patienthistory.html)
-8. [Treatment](/software/models/treatment.html)
+1. [Allergy](../software/models/allergy)
+2. [Doctor](../software/models/doctor)
+3. [Employee](../software/models/employee)
+4. [Medical Record](../software/models/medicalrecord)
+5. [Medication](../software/models/medication)
+6. [Patient](../software/models/patient)
+7. [Patient History](../software/models/patienthistory)
+8. [Treatment](../software/models/treatment)
 
 <a name="pr"></a>
 ## Prompt
