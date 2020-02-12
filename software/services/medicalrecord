@@ -1,0 +1,60 @@
+import medical.com.medicalApplication.model.MedicalRecord;
+import medical.com.medicalApplication.model.Patient;
+/**
+ * 
+ *This class is for the functionality of getting patient and medical record information
+ *
+ */
+public class MedicalRecordService {
+	private static MedicalRecordService reference = new MedicalRecordService();
+	private List<Patient> patients;
+	private List<MedicalRecord> medicalRecords;
+
+	public static MedicalRecordService getReference() {
+		return reference;
+	}
+
+	MedicalRecordService() {
+		this.patients = new ArrayList<Patient>();
+		this.medicalRecords = new ArrayList<MedicalRecord>();
+	}
+
+	//Adds new patient
+	public boolean addPatient(String name, String id) {
+		boolean patientAdded = !patients.stream()
+				.anyMatch(patient -> patient.getId().equals(id));
+		if (patientAdded) {
+			Patient newPatient = new Patient(name, id);
+			patients.add(newPatient);
+			medicalRecords.add(new MedicalRecord(newPatient));
+		}
+		return patientAdded;
+	}
+	
+	//get medical record of matching patient
+	public MedicalRecord getMedicalRecord(String patientId) {
+		return medicalRecords.stream()
+				.filter(medicalRecord -> medicalRecord.getPatient().getId().equals(patientId)).findFirst().get();
+	}
+
+	//Gets matchning patient
+	public Patient getPatient(String patientId) {
+		return patients.stream().filter(person -> person.getId().equals(patientId))
+				.findFirst().get();
+	}
+
+	//Gets all patients
+	public List<Patient> getAllPatients() {
+		return patients;
+	}
+	
+	//Gets all patients with matching allergies
+	public List<Patient> getPatientsWithAllergies(String allergyName){
+		for(Patient patient : getAllPatients()){
+			if(getMedicalRecord(patient.getId()).getHistory().getAlergies().stream().filter(allergy -> allergy.getName().equals(allergyName)).findFirst().get() != null){
+				return Collections.singletonList(patient);
+			}
+		}
+		return Collections.emptyList();
+	}
+}
