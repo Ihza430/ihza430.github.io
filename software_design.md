@@ -6,7 +6,9 @@
 - [Artifact Narrative](#an)
 - [Enhancement](#en)
 - [Main.cpp](#mc)
-- [Models}(#mo)
+- [Models](#mo)
+- [Prompts](#pr)
+- [Services](#sr)
 ---
 
 <a name="an"></a>
@@ -173,3 +175,23 @@ private static void addPerson(boolean addDoctor, Scanner scanner) {
 
 <a name="mo"></a>
 ## Models
+
+1. [Allergy]
+2. [Doctor]
+3. [Employee]
+4. [Medical Record]
+5. [Medication]
+6. [Patient]
+7. [Patient History]
+8. [Treatment]
+
+<a name="pr"></a>
+## Prompt
+
+[Medical Record Prompt]
+
+<a name="sr"></a>
+## Services
+
+1. [Doctor Service]
+2. [Medical Record Service]
