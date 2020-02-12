@@ -1,0 +1,35 @@
+import medical.com.medicalApplication.model.Doctor;
+/**
+ * 
+ * This class is to get all doctors or add doctors
+ *
+ */
+public class DoctorService {
+	private static DoctorService reference = new DoctorService();
+	private static List<Doctor> doctors;
+	
+	 DoctorService(){
+		doctors = new ArrayList<Doctor>();
+	}
+	 
+	public static DoctorService getReference(){
+		return reference;
+	}
+	
+	//gets all doctors
+	public List<Doctor> getAllDoctors(){
+		return doctors;
+	}
+	
+	//Adding new doctor
+	public boolean addDoctor(String name, String id){
+		String tempId = new String(id);
+		//Doctor must have unique id
+		boolean createDoctor = !doctors.stream().anyMatch(doctor -> doctor.getId() == tempId);
+		if (createDoctor) {
+			doctors.add(new Doctor(name, id));
+		}
+		return createDoctor;
+	}
+
+}
