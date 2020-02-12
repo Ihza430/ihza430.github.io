@@ -5,10 +5,7 @@
 ---
 - [Artifact Narrative](#an)
 - [Enhancement](#en)
-- [Main.cpp](#mc)
-- [Models](#mo)
-- [Prompts](#pr)
-- [Services](#sr)
+- [Code](#co)
 ---
 
 <a name="an"></a>
@@ -47,8 +44,18 @@ Cobb, C. G. (2015-01-26). The Project Manager's Guide to Mastering Agile: Princi
 
 Porter, J. (2006, November 14). The Freedom of Fast Iterations: How Netflix Designs a Winning Web Site. Retrieved from https://articles.uie.com/fast_iterations
 
+
+<a name="co"></a>
+## Code
+
+---
+- [Main](#mc)
+- [Model](#mo)
+- [Prompt](#pr)
+- [Services](#sr)
+
 <a name="mc"></a>
-## Main.app
+### Main.app
 
 ```
 public class App {
@@ -174,24 +181,24 @@ private static void addPerson(boolean addDoctor, Scanner scanner) {
 ```
 
 <a name="mo"></a>
-## Models
+### Models
 
-1. [Allergy](../software/models/allergy)
-2. [Doctor](../software/models/doctor)
-3. [Employee](../software/models/employee)
-4. [Medical Record](../software/models/medicalrecord)
-5. [Medication](../software/models/medication)
-6. [Patient](../software/models/patient)
-7. [Patient History](../software/models/patienthistory)
-8. [Treatment](../software/models/treatment)
+1. [Allergy](../ihza430.github.io/software/models/allergy)
+2. [Doctor](../ihza430.github.io/software/models/doctor)
+3. [Employee](../ihza430.github.io/software/models/employee)
+4. [Medical Record](../ihza430.github.io/software/models/medicalrecord)
+5. [Medication](../ihza430.github.io/software/models/medication)
+6. [Patient](../ihza430.github.io/software/models/patient)
+7. [Patient History](../ihza430.github.io/software/models/patienthistory)
+8. [Treatment](../ihza430.github.io/software/models/treatment)
 
 <a name="pr"></a>
-## Prompt
+### Prompt
 
 [Medical Record Prompt]
 
 <a name="sr"></a>
-## Services
+### Services
 
 1. [Doctor Service]
 2. [Medical Record Service]
