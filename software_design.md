@@ -6,6 +6,7 @@
 - [Artifact Narrative](#an)
 - [Enhancement](#en)
 - [Main.cpp](#mc)
+- [Models}(#mo)
 ---
 
 <a name="an"></a>
@@ -170,3 +171,5 @@ private static void addPerson(boolean addDoctor, Scanner scanner) {
 }
 ```
 
+<a name="mo"></a>
+## Models
