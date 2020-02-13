@@ -3,6 +3,7 @@ package medical.com.medicalApplication.model;
 /**
  * This class represents the Doctor data model in the system
  */
+ 
 public class Doctor {
 	private String name;
 	private String id;
