@@ -1,5 +1,4 @@
 # Software Engineering and Design
----
 
 ### [Home](https://ihza430.github.io)  | [Code Review](/code_review.html) | [Software Engineering & Design](/software_design.html) | [Data Structures & Algorithms](/data_structures.html) | [Databases](/databases.html)
 
@@ -52,7 +51,6 @@ Porter, J. (2006, November 14). The Freedom of Fast Iterations: How Netflix Desi
 <a name="co"></a>
 ## Code
 
----
 - [Main](#mc)
 - [Model](#mo)
 - [Prompt](#pr)
