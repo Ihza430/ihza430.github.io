@@ -1,5 +1,4 @@
 ## Data Structures & Algorithms
----
 
 ### [Home](https://ihza430.github.io)  | [Code Review](/code_review.html) | [Software Engineering & Design](/software_design.html) | [Data Structures & Algorithms](/data_structures.html) | [Databases](/databases.html)
 
@@ -62,5 +61,1019 @@ Zybooks: CS-260: Data Structures. (n.d.). Retrieved from https://learn.zybooks.c
 <a name="co"></a>
 ## Code
 
+- [Vector Sorting](#vs)
+- [Binary Search Tree](#bs)
+- [Hash Table](#ht)
+
+<a name="vs"></a>
+### Vector Sorting
+```
+//============================================================================
+// Name        : VectorSorting.cpp
+// Author      : Ihza Gonzales
+// Course      : CS 260 Data Structures & Algorithms
+// Date        : February 2, 2020
+// Version     : 1.0
+// Copyright   : Copyright © 2017 SNHU COCE
+// Description : Vector Sorting Algorithms
+//============================================================================
+
+#include <algorithm>
+#include <iostream>
+#include <time.h>
+
+#include "CSVparser.hpp"
+
+using namespace std;
+
+//============================================================================
+// Global definitions visible to all methods and classes
+//============================================================================
+
+// forward declarations
+double strToDouble(string str, char ch);
+
+// define a structure to hold bid information
+struct Bid {
+    string bidId; // unique identifier
+    string title;
+    string fund;
+    double amount;
+    Bid() {
+        amount = 0.0;
+    }
+};
+
+//============================================================================
+// Static methods used for testing
+//============================================================================
+
+/**
+ * Display the bid information to the console (std::out)
+ *
+ * @param bid struct containing the bid info
+ */
+void displayBid(Bid bid) {
+    cout << bid.bidId << ": " << bid.title << " | " << bid.amount << " | "
+            << bid.fund << endl;
+    return;
+}
+
+/**
+ * Prompt user for bid information using console (std::in)
+ *
+ * @return Bid struct containing the bid info
+ */
+Bid getBid() {
+    Bid bid;
+
+    cout << "Enter Id: ";
+    cin.ignore();
+    getline(cin, bid.bidId);
+
+    cout << "Enter title: ";
+    getline(cin, bid.title);
+
+    cout << "Enter fund: ";
+    cin >> bid.fund;
+
+    cout << "Enter amount: ";
+    cin.ignore();
+    string strAmount;
+    getline(cin, strAmount);
+    bid.amount = strToDouble(strAmount, '$');
+
+    return bid;
+}
+
+/**
+ * Load a CSV file containing bids into a container
+ *
+ * @param csvPath the path to the CSV file to load
+ * @return a container holding all the bids read
+ */
+vector<Bid> loadBids(string csvPath) {
+    cout << "Loading CSV file " << csvPath << endl;
+
+    // Define a vector data structure to hold a collection of bids.
+    vector<Bid> bids;
+
+    // initialize the CSV Parser using the given path
+    csv::Parser file = csv::Parser(csvPath);
+
+    try {
+        // loop to read rows of a CSV file
+        for (int i = 0; i < file.rowCount(); i++) {
+
+            // Create a data structure and add to the collection of bids
+            Bid bid;
+            bid.bidId = file[i][1];
+            bid.title = file[i][0];
+            bid.fund = file[i][8];
+            bid.amount = strToDouble(file[i][4], '$');
+
+            //cout << "Item: " << bid.title << ", Fund: " << bid.fund << ", Amount: " << bid.amount << endl;
+
+            // push this bid to the end
+            bids.push_back(bid);
+        }
+    } catch (csv::Error &e) {
+        std::cerr << e.what() << std::endl;
+    }
+    return bids;
+}
+
+//Implement the quick sort logic over bid.title
+
+/**
+ * Partition the vector of bids into two parts, low and high
+ *
+ * @param bids Address of the vector<Bid> instance to be partitioned
+ * @param begin Beginning index to partition
+ * @param end Ending index to partition
+ */
+int partition(vector<Bid>& bids, int begin, int end) {
+	int midpoint = begin + (end - begin) / 2;
+	   Bid pivot = bids.at(midpoint);
+	   int x = begin;
+	   int y = end;
+	   bool done = false;
+
+	   while(!done){
+	       while(bids.at(x).title.compare(pivot.title) == -1){
+	           ++x;
+	       }
+
+	       while(pivot.title.compare(bids.at(y).title) == -1){
+	           --y;
+	       }
+
+	       if(x>=y){
+	           done = true;
+	       }
+
+	       else{
+	           Bid temp = bids.at(x);
+	           bids.at(x) = bids.at(y);
+	           bids.at(y) = temp;
+
+	           ++x;
+	           --y;
+	       }
+
+	   }
+	   return y;
+}
+
+/**
+ * Perform a quick sort on bid title
+ * Average performance: O(n log(n))
+ * Worst case performance O(n^2))
+ *
+ * @param bids address of the vector<Bid> instance to be sorted
+ * @param begin the beginning index to sort on
+ * @param end the ending index to sort on
+ */
+void quickSort(vector<Bid>& bids, int begin, int end) {
+	int pivot = 0;
+
+	   if(begin >= end){
+	       return;
+	   }
+
+	   pivot = partition(bids, begin, end);
+
+	   quickSort(bids, begin, pivot);
+	   quickSort(bids, pivot + 1, end);
+}
+
+//Implement the selection sort logic over bid.title
+
+/**
+ * Perform a selection sort on bid title
+ * Average performance: O(n^2))
+ * Worst case performance O(n^2))
+ *
+ * @param bid address of the vector<Bid>
+ *            instance to be sorted
+ */
+void selectionSort(vector<Bid>& bids) {
+	 for(int i = 0; i < bids.size(); ++i){
+
+	       int indexSmallesTitle = i;
+
+	       for(int j = i + 1; j < bids.size(); ++j){
+	           if(bids.at(indexSmallesTitle).title.compare(bids.at(j).title) == 1){
+
+	               indexSmallesTitle = j;
+	           }
+	       }
+
+	       Bid temp = bids.at(i);
+	       bids.at(i) = bids.at(indexSmallesTitle);
+	       bids.at(indexSmallesTitle) = temp;
+	   }
+}
+
+/**
+ * Simple C function to convert a string to a double
+ * after stripping out unwanted char
+ *
+ * credit: http://stackoverflow.com/a/24875936
+ *
+ * @param ch The character to strip out
+ */
+double strToDouble(string str, char ch) {
+    str.erase(remove(str.begin(), str.end(), ch), str.end());
+    return atof(str.c_str());
+}
+
+/**
+ * The one and only main() method
+ */
+int main(int argc, char* argv[]) {
+
+    // process command line arguments
+    string csvPath;
+    switch (argc) {
+    case 2:
+        csvPath = argv[1];
+        break;
+    default:
+        csvPath = "eBid_Monthly_Sales_Dec_2016.csv";
+    }
+
+    // Define a vector to hold all the bids
+    vector<Bid> bids;
+
+    // Define a timer variable
+    clock_t ticks;
+
+    int choice = 0;
+    while (choice != 9) {
+        cout << "Menu:" << endl;
+        cout << "  1. Load Bids" << endl;
+        cout << "  2. Display All Bids" << endl;
+        cout << "  3. Selection Sort All Bids" << endl;
+        cout << "  4. Quick Sort All Bids" << endl;
+        cout << "  9. Exit" << endl;
+        cout << "Enter choice: ";
+        cin >> choice;
+
+        switch (choice) {
+	
+	//Load Bid
+        case 1:
+            // Initialize a timer variable before loading bids
+            ticks = clock();
+
+            // Complete the method call to load the bids
+            bids = loadBids(csvPath);
+
+            cout << bids.size() << " bids read" << endl;
+
+            // Calculate elapsed time and display result
+            ticks = clock() - ticks; // current clock ticks minus starting clock ticks
+            cout << "time: " << ticks << " clock ticks" << endl;
+            cout << "time: " << ticks * 1.0 / CLOCKS_PER_SEC << " seconds" << endl;
+
+            break;
+
+	//Display bids
+        case 2:
+            // Loop and display the bids read
+            for (int i = 0; i < bids.size(); ++i) {
+                displayBid(bids[i]);
+            }
+            cout << endl;
+
+            break;
+
+        // Selection sort and report timing results
+        case 3:
+        	ticks = clock();
+            selectionSort(bids);
+            ticks = clock() - ticks;
+
+            cout << bids.size() << " bids sorted" << endl;
+            cout <<	"time: " << ticks << " clock ticks" << endl;
+            cout <<	"time: " << ticks * 1.0 / CLOCKS_PER_SEC << " seconds" << endl;
+
+            break;
 
 
+        // Quick sort and report timing results
+        case 4:
+            ticks = clock();
+            quickSort(bids, 0, bids.size() - 1);
+            ticks = clock() - ticks;
+
+            cout << bids.size() << " bids sorted" << endl;
+            cout <<	"time: " << ticks << " clock ticks" << endl;
+            cout <<	"time: " << ticks * 1.0 / CLOCKS_PER_SEC << " seconds" << endl;
+
+            break;
+
+        }
+    }
+
+    cout << "Good bye." << endl;
+
+    return 0;
+}
+```
+<a name="bs"></a>
+### Binary Search Tree 
+```
+//============================================================================
+// Name        : BinarySearchTree.cpp
+// Author      : Ihza Gonzales
+// Course      : CS 260 Data Structures & Algorithms
+// Date        : February 2, 2020
+// Version     : 1.0
+// Copyright   : Copyright © 2017 SNHU COCE
+// Description : Binary Search Tree Implementation
+//============================================================================
+
+#include <algorithm>
+#include <iostream>
+#include <time.h>
+#include <string>
+#include "CSVparser.hpp"
+
+using namespace std;
+
+//============================================================================
+// Global definitions visible to all methods and classes
+//============================================================================
+
+// forward declarations
+double strToDouble(string str, char ch);
+
+// define a structure to hold bid information
+struct Bid {
+    string bidId; // unique identifier
+    string title;
+    string fund;
+    double amount;
+    Bid() {
+        amount = 0.0;
+    }
+};
+
+//Internal structure for tree node
+struct Node {
+	Bid bid;
+	Node* parentPtr;
+	Node* leftPtr;
+	Node* rightPtr;
+};
+
+//============================================================================
+// Binary Search Tree class definition
+//============================================================================
+
+/**
+ * Define a class containing data members and methods to
+ * implement a binary search tree
+ */
+class BinarySearchTree {
+
+private:
+    Node* root;
+
+    void addNode(Node* node, Bid bid);
+    void inOrder(Node* node);
+    Node* removeNode(Node* node, string bidId);
+
+public:
+    BinarySearchTree();
+    virtual ~BinarySearchTree();
+    void InOrder();
+    void Insert(Bid bid);
+    void Remove(string bidId);
+    Bid Search(string bidId);
+};
+
+/**
+ * Default constructor
+ */
+BinarySearchTree::BinarySearchTree() {
+    // initialize housekeeping variables
+	root = nullptr;
+}
+
+/**
+ * Destructor
+ */
+BinarySearchTree::~BinarySearchTree() {
+    // recurse from root deleting every node
+
+}
+
+/**
+ * Traverse the tree in order
+ */
+void BinarySearchTree::InOrder() {
+}
+/**
+ * Insert a bid
+ */
+void BinarySearchTree::Insert(Bid bid) {
+    //Implement inserting a bid into the tree
+	if (root == nullptr) {
+		root = new Node;
+	    root->bid = bid;
+	    root->leftPtr = nullptr;
+	    root->rightPtr = nullptr;
+	    root->parentPtr = nullptr;
+	}
+	else {
+	    addNode(root, bid);
+	}
+}
+
+/**
+ * Remove a bid
+ */
+void BinarySearchTree::Remove(string bidId) {
+    //Implement removing a bid from the tree
+	Node* nodePtr = Remove(root, bidId);
+
+	if (nodePtr == nullptr) {
+		return;
+	}
+	else {
+	    nodePtr->parentPtr->leftPtr = nodePtr->leftPtr;
+	    nodePtr->parentPtr->rightPtr = nodePtr->rightPtr;
+	    nodePtr->leftPtr->parentPtr = nodePtr->parentPtr;
+	    nodePtr->rightPtr->parentPtr = nodePtr->parentPtr;
+	    delete nodePtr;
+	}
+}
+
+/**
+ * Search for a bid
+ */
+Bid BinarySearchTree::Search(string bidId) {
+    //Implement searching the tree for a bid
+	Node* nodePtr = Search(root, bidId);
+
+	if (nodePtr == nullptr) {
+		Bid bid;
+	    return bid;
+	}
+	else {
+		return nodePtr->bid;
+	}
+	Bid bid;
+    return bid;
+}
+
+/**
+ * Add a bid to some node (recursive)
+ *
+ * @param node Current node in tree
+ * bid Bid to be added
+ */
+void BinarySearchTree::addNode(Node* node, Bid bid) {
+    //Implement inserting a bid into the tree
+	int curKey = atoi(node->bid.bidId.c_str());
+	int key = atoi(bid.bidId.c_str());
+
+	cout << "Current key is: " << curKey << endl;
+	cout << "Search key is: " << key << endl;
+
+	if (key > curKey) {
+		if (node->rightPtr == nullptr) {
+			node->rightPtr = new Node;
+	        node->rightPtr->bid = bid;
+	        node->rightPtr->rightPtr = nullptr;
+	        node->rightPtr->leftPtr = nullptr;
+	        node->rightPtr->parentPtr = node;
+	    }
+		else {
+			addNode(node->rightPtr, bid);
+	    }
+    }
+	else {
+		if (node->leftPtr == nullptr) {
+	        node->leftPtr = new Node;
+	        node->leftPtr->bid = bid;
+	        node->leftPtr->rightPtr = nullptr;
+	        node->leftPtr->leftPtr = nullptr;
+	        node->leftPtr->parentPtr = node;
+
+	        cout << "leftPtr is nullptr" << endl;
+	    }
+		else {
+	        cout << "leftPtr is NOT nullptr" << endl;
+	        addNode(node->leftPtr, bid);
+	    }
+	}
+}
+void BinarySearchTree::inOrder(Node* node) {
+}
+//============================================================================
+// Static methods used for testing
+//============================================================================
+
+/**
+ * Display the bid information to the console (std::out)
+ *
+ * @param bid struct containing the bid info
+ */
+void displayBid(Bid bid) {
+    cout << bid.bidId << ": " << bid.title << " | " << bid.amount << " | "
+            << bid.fund << endl;
+    return;
+}
+
+/**
+ * Load a CSV file containing bids into a container
+ *
+ * @param csvPath the path to the CSV file to load
+ * @return a container holding all the bids read
+ */
+void loadBids(string csvPath, BinarySearchTree* bst) {
+    cout << "Loading CSV file " << csvPath << endl;
+
+    // initialize the CSV Parser using the given path
+    csv::Parser file = csv::Parser(csvPath);
+
+    // read and display header row - optional
+    vector<string> header = file.getHeader();
+    for (auto const& c : header) {
+        cout << c << " | ";
+    }
+    cout << "" << endl;
+
+    try {
+        // loop to read rows of a CSV file
+        for (unsigned int i = 0; i < file.rowCount(); i++) {
+
+            // Create a data structure and add to the collection of bids
+            Bid bid;
+            bid.bidId = file[i][1];
+            bid.title = file[i][0];
+            bid.fund = file[i][8];
+            bid.amount = strToDouble(file[i][4], '$');
+
+            //cout << "Item: " << bid.title << ", Fund: " << bid.fund << ", Amount: " << bid.amount << endl;
+
+            // push this bid to the end
+            bst->Insert(bid);
+        }
+    } catch (csv::Error &e) {
+        std::cerr << e.what() << std::endl;
+    }
+}
+
+/**
+ * Simple C function to convert a string to a double
+ * after stripping out unwanted char
+ *
+ * credit: http://stackoverflow.com/a/24875936
+ *
+ * @param ch The character to strip out
+ */
+double strToDouble(string str, char ch) {
+    str.erase(remove(str.begin(), str.end(), ch), str.end());
+    return atof(str.c_str());
+}
+
+/**
+ * The one and only main() method
+ */
+int main(int argc, char* argv[]) {
+
+    // process command line arguments
+    string csvPath, bidKey;
+    switch (argc) {
+    case 2:
+        csvPath = argv[1];
+        bidKey = "98109";
+        break;
+    case 3:
+        csvPath = argv[1];
+        bidKey = argv[2];
+        break;
+    default:
+        csvPath = "eBid_Monthly_Sales_Dec_2016.csv";
+        bidKey = "98109";
+    }
+
+    // Define a timer variable
+    clock_t ticks;
+
+    // Define a binary search tree to hold all bids
+    BinarySearchTree* bst;
+
+    Bid bid;
+
+    int choice = 0;
+    while (choice != 9) {
+        cout << "Menu:" << endl;
+        cout << "  1. Load Bids" << endl;
+        cout << "  2. Display All Bids" << endl;
+        cout << "  3. Find Bid" << endl;
+        cout << "  4. Remove Bid" << endl;
+        cout << "  9. Exit" << endl;
+        cout << "Enter choice: ";
+        cin >> choice;
+
+        switch (choice) {
+
+	//Load Bids
+        case 1:
+            bst = new BinarySearchTree();
+
+            // Initialize a timer variable before loading bids
+            ticks = clock();
+
+            // Complete the method call to load the bids
+            loadBids(csvPath, bst);
+
+            //cout << bst->Size() << " bids read" << endl;
+
+            // Calculate elapsed time and display result
+            ticks = clock() - ticks; // current clock ticks minus starting clock ticks
+            cout << "time: " << ticks << " clock ticks" << endl;
+            cout << "time: " << ticks * 1.0 / CLOCKS_PER_SEC << " seconds" << endl;
+            break;
+
+	//Display All bids
+        case 2:
+            bst->InOrder();
+            break;
+
+	//Search Bids
+        case 3:
+            ticks = clock();
+
+            bid = bst->Search(bidKey);
+
+            ticks = clock() - ticks; // current clock ticks minus starting clock ticks
+
+            if (!bid.bidId.empty()) {
+                displayBid(bid);
+            } else {
+            	cout << "Bid Id " << bidKey << " not found." << endl;
+            }
+
+            cout << "time: " << ticks << " clock ticks" << endl;
+            cout << "time: " << ticks * 1.0 / CLOCKS_PER_SEC << " seconds" << endl;
+
+            break;
+
+	//Delete Bids
+        case 4:
+            bst->Remove(bidKey);
+            break;
+        }
+    }
+
+    cout << "Good bye." << endl;
+
+	return 0;
+}
+```
+
+<a name="ht"></a>
+### Hash Table
+```
+//============================================================================
+// Name        : HashTable.cpp
+// Author      : Ihza Gonzales
+// Course      : CS 260 Data Structures and Algorithms
+// Date        : February 2, 2020
+// Version     : 1.0
+// Copyright   : Copyright © 2017 SNHU COCE
+// Description : Hash Table
+//============================================================================
+
+#include <algorithm>
+#include <climits>
+#include <iostream>
+#include <string>
+#include <time.h>
+#include <list>
+
+#include "CSVparser.hpp"
+
+using namespace std;
+
+//============================================================================
+// Global definitions visible to all methods and classes
+//============================================================================
+
+
+const unsigned int DEFAULT_SIZE = 179;
+
+// forward declarations
+double strToDouble(string str, char ch);
+
+// define a structure to hold bid information
+struct Bid {
+	string bidId;
+    string title;
+    string fund;
+    double amount;
+    Bid() {
+    	amount = 0.0;
+    }
+};
+
+//============================================================================
+// Hash Table class definition
+//============================================================================
+
+/**
+ * Define a class containing data members and methods to
+ * implement a hash table with chaining.
+ */
+
+class HashTable {
+
+private:
+	// Define structures to hold bids
+
+	vector<list<Bid>> bids;
+
+	unsigned int hash(int key);
+
+public:
+	HashTable();
+	virtual ~HashTable();
+	void Insert(Bid bid);
+	void PrintAll();
+	void Remove(string bidId);
+	Bid Search(string bidId);
+};
+
+/**
+ * Default constructor
+ */
+HashTable::HashTable() {
+	//Initialize the structures used to hold bids
+	bids.resize(17939);
+}
+
+/**
+ * Destructor
+ */
+HashTable::~HashTable() {
+	// Implement logic to free storage when class is destroyed
+	bids.clear();
+	delete &bids;
+}
+
+/**
+ * Calculate the hash value of a given key.
+ * Note that key is specifically defined as
+ * unsigned int to prevent undefined results
+ * of a negative list index.
+ *
+ * @param key The key to hash
+ * @return The calculated hash
+ */
+unsigned int HashTable::hash(int key) {
+	// Implement logic to calculate a hash value
+	int hashVal = 25;
+	int hash = key % hashVal;
+	return hash;
+}
+
+/**
+ * Insert a bid
+ *
+ * @param bid The bid to insert
+ */
+void HashTable::Insert(Bid bid) {
+	// Implement logic to insert a bid
+	int id = stoi(bid.bidId);
+	int key = hash(id);
+	Bid currentNode;
+	currentNode = bid;
+
+	bids.at(key).push_back(currentNode);
+}
+
+/**
+ * Print all bids
+ */
+void HashTable::PrintAll() {
+	 //Implement logic to print all bids
+	for(int i = 0; i < bids.size(); ++i){
+		if(bids.at(i).size() > 0){
+			for(auto j : bids.at(i))
+				cout << "Key "<< i << ": | "<<j.bidId<< " | "<< j.title << " | "<<j.amount << " | " << j.fund << endl;
+		}
+	}
+}
+
+/**
+ * Remove a bid
+ *
+ * @param bidId The bid id to search for
+ */
+void HashTable::Remove(string bidId) {
+	// Implement logic to remove a bid
+	int hashVal = stoi(bidId);
+	int key = hash(hashVal);
+
+	if(bids.at(key).size() > 0){
+		list<Bid>::const_iterator k;
+		for(k = bids.at(key).begin(); k != bids.at(key).end(); k++ ){
+			if(k->bidId.compare(bidId) == 0){
+				k = bids.at(key).erase(k);
+			}
+		}
+	}
+}
+
+/**
+ * Search for the specified bidId
+ *
+ * @param bidId The bid id to search for
+ */
+Bid HashTable::Search(string bidId) {
+	Bid bid;
+
+	//Implement logic to search for and return a bid
+	int hashVal = stoi(bidId);
+	int key = hash(hashVal);
+	if(bids.at(key).size() > 0){
+		list<Bid>::const_iterator k;
+		for(k = bids.at(key).begin(); k != bids.at(key).end(); k++ ){
+			if(k->bidId.compare(bidId) == 0){
+				return *k;
+			}
+		}
+	}
+
+	return bid;
+}
+
+//============================================================================
+// Static methods used for testing
+//============================================================================
+
+/**
+ * Display the bid information to the console (std::out)
+ *
+ * @param bid struct containing the bid info
+ */
+void displayBid(Bid bid) {
+	cout << bid.bidId << ": " << bid.title << " | " << bid.amount << " | "
+			<< bid.fund << endl;
+	return;
+}
+
+/**
+ * Load a CSV file containing bids into a container
+ *
+ * @param csvPath the path to the CSV file to load
+ * @return a container holding all the bids read
+ */
+void loadBids(string csvPath, HashTable* hashTable) {
+	cout << "Loading CSV file " << "test" << endl;
+
+	// initialize the CSV Parser using the given path
+	csv::Parser file = csv::Parser(csvPath);
+
+	// read and display header row - optional
+	vector<string> header = file.getHeader();
+	for (auto const& c : header) {
+		cout << c << " | ";
+	}
+	cout << "" << endl;
+
+	try {
+        // loop to read rows of a CSV file
+		for (unsigned int i = 0; i < file.rowCount(); i++) {
+
+			// Create a data structure and add to the collection of bids
+			Bid bid;
+			bid.bidId = file[i][1];
+			bid.title = file[i][0];
+			bid.fund = file[i][8];
+			bid.amount = strToDouble(file[i][4], '$');
+
+			//cout << "Item: " << bid.title << ", Fund: " << bid.fund << ", Amount: " << bid.amount << endl;
+			cout << "Item: " << bid.title << ", Fund: " << bid.fund << ", Amount: " << bid.amount << endl;
+			// push this bid to the end
+			hashTable->Insert(bid);
+		}
+	} catch (csv::Error &e) {
+		std::cerr << e.what() << std::endl;
+	}
+}
+
+/**
+ * Simple C function to convert a string to a double
+ * after stripping out unwanted char
+ *
+ * credit: http://stackoverflow.com/a/24875936
+ *
+ * @param ch The character to strip out
+ */
+double strToDouble(string str, char ch) {
+	str.erase(remove(str.begin(), str.end(), ch), str.end());
+	return atof(str.c_str());
+}
+
+/**
+ * The one and only main() method
+ */
+int main(int argc, char* argv[]) {
+
+	// process command line arguments
+	string csvPath, bidKey;
+	switch (argc) {
+	case 2:
+		csvPath = argv[1];
+		bidKey = "98109";
+		break;
+	case 3:
+		csvPath = argv[1];
+		bidKey = argv[2];
+		break;
+	default:
+		csvPath = "eBid_Monthly_Sales_Dec_2016.csv";
+		bidKey = "97991";
+}
+
+
+// Define a timer variable
+clock_t ticks;
+
+// Define a hash table to hold all the bids
+HashTable* bidTable;
+
+Bid bid;
+
+int choice = 0;
+while (choice != 9) {
+	cout << "Menu:" << endl;
+	cout << " 1. Load Bids" << endl;
+	cout << " 2. Display All Bids" << endl;
+	cout << " 3. Find Bid" << endl;
+	cout << " 4. Remove Bid" << endl;
+	cout << " 9. Exit" << endl;
+	cout << "Enter choice: ";
+	cin >> choice;
+
+switch (choice) {
+
+//Load Bids
+case 1:
+	bidTable = new HashTable();
+
+	// Initialize a timer variable before loading bids
+	ticks = clock();
+
+	// Complete the method call to load the bids
+	loadBids(csvPath, bidTable);
+
+	// Calculate elapsed time and display result
+	ticks = clock() - ticks; // current clock ticks minus starting clock ticks
+	cout << "time: " << ticks << " clock ticks" << endl;
+	cout << "time: " << ticks * 1.0 / CLOCKS_PER_SEC << " seconds" << endl;
+	break;
+
+//Print all bids
+case 2:
+	bidTable->PrintAll();
+	break;
+
+//Search bids
+case 3:
+	ticks = clock();
+
+	bid = bidTable->Search(bidKey);
+
+	ticks = clock() - ticks;// current clock ticks minus starting clock ticks
+
+	if (!bid.bidId.empty()) {
+		displayBid(bid);
+	} else {
+		cout << "Bid Id " << bidKey << " not found." << endl;
+	}
+
+	cout << "time: " << ticks << " clock ticks" << endl;
+	cout << "time: " << ticks * 1.0 / CLOCKS_PER_SEC << " seconds" << endl;
+	break;
+
+//Remove bids
+case 4:
+	bidTable->Remove(bidKey);
+	break;
+	}
+}
+
+	cout << "Good bye." << endl;
+
+	return 0;
+}
+```
