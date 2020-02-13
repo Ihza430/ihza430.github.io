@@ -5,7 +5,7 @@
 
 ---
 - [Artifact Narrative](#an)
-- [Enhancement](#en)
+- [Enhancement Text](#en)
 - [Code](#co)
 
 
@@ -21,7 +21,7 @@ The expected course outcomes for this enhancement was met. Knowing the process a
 Reflecting on the process of enhancing this artifact, there were many things to consider. The whole software process is not simple as what it might seem on a chart. Though I went through a simplified process, I still felt overwhelmed by the whole thing. There are so many steps and I had to take some of those steps multiple times to get a product that a client would be happy to release. I can only imagine if I had to code from scratch. The allotted time for this class would not be enough but I am also one person. The software process is a collaborative effort and that is really an important aspect I was not able to experience. Though I understand the importance and imagine how I would collaborate in real life having firsthand experience would be the best. The other important thing I learned about myself is that I am still struggling to write code. I surely have gotten better at it and understand the concepts involved. When I was fixing the errors, it did take me awhile and a lot of trial and error to get them to function. But I know I should be a lot more confident in my ability to code. Going through my enhancement, my code lacks comments throughout and doing this enhancement let me be more aware of that as a developer. 
 
 <a name="en"></a>
-## Enhancement
+## Enhancement Text
 
 Agile development helps solve many of these problems. The basic method is to work in iterations. Each individual task will go through the whole cycle from planning to developing all the way to testing. This allows for the requirements of a project to be flexible and because of this, communication is a must between the client and the team. For Agile development to be successfully implemented, there are some key features to consider. The first are the different roles involved which are the scrum master, product owner, tester, and developer. The second are phases within the Agile development. For this scenario, a local hospital has hired the company (myself) to create a medical application. Each role will be part of each phase but at certain phases some roles will become more prominent. 
 
