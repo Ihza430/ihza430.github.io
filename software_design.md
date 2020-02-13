@@ -185,13 +185,13 @@ private static void addPerson(boolean addDoctor, Scanner scanner) {
 ### Models
 
 1. [Allergy](https://github.com/Ihza430/ihza430.github.io/blob/master/software/models/allergy)
-2. [Doctor](../blob/master/software/models/doctor)
-3. [Employee](./ihza430.github.io/software/models/employee)
-4. [Medical Record](./ihza430.github.io/software/models/medicalrecord)
-5. [Medication](./ihza430.github.io/software/models/medication)
-6. [Patient](./ihza430.github.io/software/models/patient)
-7. [Patient History](./ihza430.github.io/software/models/patienthistory)
-8. [Treatment](./ihza430.github.io/software/models/treatment)
+2. [Doctor](https://github.com/Ihza430/ihza430.github.io/blob/master/software/models/doctor)
+3. [Employee](https://github.com/Ihza430/ihza430.github.io/blob/master/software/models/employee)
+4. [Medical Record](https://github.com/Ihza430/ihza430.github.io/blob/master/software/models/medicalrecord)
+5. [Medication](https://github.com/Ihza430/ihza430.github.io/blob/master/software/models/medication)
+6. [Patient](https://github.com/Ihza430/ihza430.github.io/blob/master/software/models/patient)
+7. [Patient History](https://github.com/Ihza430/ihza430.github.io/blob/master/software/models/patienthistory)
+8. [Treatment](https://github.com/Ihza430/ihza430.github.io/blob/master/software/models/treatment)
 
 <a name="pr"></a>
 ### Prompt
