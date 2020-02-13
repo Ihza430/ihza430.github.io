@@ -1,10 +1,16 @@
+package medical.com.medicalApplication.services;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import medical.com.medicalApplication.model.MedicalRecord;
 import medical.com.medicalApplication.model.Patient;
-/**
- * 
+
+/** 
  *This class is for the functionality of getting patient and medical record information
- *
  */
+ 
 public class MedicalRecordService {
 	private static MedicalRecordService reference = new MedicalRecordService();
 	private List<Patient> patients;
