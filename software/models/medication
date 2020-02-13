@@ -1,8 +1,9 @@
+package medical.com.medicalApplication.model;
+
 /**
- * 
  * This class represents the mediation model in the system
- *
  */
+ 
 public class Medication {
 	private String name;
 	private String startDate;
