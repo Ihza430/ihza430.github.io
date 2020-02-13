@@ -1,9 +1,9 @@
+package medical.com.medicalApplication.model;
+
 /**
- * 
- * 
  * This class represents a medical record model in the system
- *
  */
+ 
 public class MedicalRecord {
 
 	private Patient patient;
