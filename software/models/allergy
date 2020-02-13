@@ -1,8 +1,9 @@
-```
+package medical.com.medicalApplication.model;
+
 /**
  * This class represent the Allergy model in the application
- *
  */
+ 
 public class Allergy {
 	private String name;
 
@@ -24,4 +25,4 @@ public class Allergy {
 	}	
 	
 }
-```
+
