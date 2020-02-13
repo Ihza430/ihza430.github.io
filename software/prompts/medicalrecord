@@ -1,14 +1,20 @@
+package medical.com.medicalApplication.prompts;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.Scanner;
+
 import medical.com.medicalApplication.model.Allergy;
 import medical.com.medicalApplication.model.MedicalRecord;
 import medical.com.medicalApplication.model.Medication;
 import medical.com.medicalApplication.model.Patient;
 import medical.com.medicalApplication.model.Treatment;
 import medical.com.medicalApplication.services.MedicalRecordService;
+
 /**
- * 
  * This class creates the prompts for the medical application
- *
  */
+ 
 public class MedicalRecordPrompt {
 	private static List<String> prompt = Arrays.asList("","Medical Record Menu", "1 Add a Treatment", "2 Add a Medication",
 			"3 Print Patient's Treatments", "4 Print Patient's Medications", "5 Add Allergy", "6 Print Allergies", "0 Main Menu");
