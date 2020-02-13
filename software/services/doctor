@@ -1,9 +1,14 @@
+package medical.com.medicalApplication.services;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import medical.com.medicalApplication.model.Doctor;
+
 /**
- * 
  * This class is to get all doctors or add doctors
- *
  */
+ 
 public class DoctorService {
 	private static DoctorService reference = new DoctorService();
 	private static List<Doctor> doctors;
