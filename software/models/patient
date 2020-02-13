@@ -1,8 +1,9 @@
+package medical.com.medicalApplication.model;
+
 /**
- * 
  * This class represents a patient model in the system
- *
  */
+ 
 public class Patient {
 	private String name;
 	private String id;
