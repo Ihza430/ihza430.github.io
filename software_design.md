@@ -184,8 +184,8 @@ private static void addPerson(boolean addDoctor, Scanner scanner) {
 <a name="mo"></a>
 ### Models
 
-1. [Allergy](https://github.com/Ihza430/ihza430.github.io/blob/master/software/models/allergy)
-2. [Doctor](./ihza430.github.io/software/models/doctor)
+1. [Allergy](../blob/master/software/models/allergy)
+2. [Doctor](../blob/master/software/models/doctor)
 3. [Employee](./ihza430.github.io/software/models/employee)
 4. [Medical Record](./ihza430.github.io/software/models/medicalrecord)
 5. [Medication](./ihza430.github.io/software/models/medication)
