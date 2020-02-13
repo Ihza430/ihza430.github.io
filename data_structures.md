@@ -68,7 +68,7 @@ Zybooks: CS-260: Data Structures. (n.d.). Retrieved from https://learn.zybooks.c
 <a name="vs"></a>
 ### Vector Sorting
 ```
-//============================================================================
+//=========================================================
 // Name        : VectorSorting.cpp
 // Author      : Ihza Gonzales
 // Course      : CS 260 Data Structures & Algorithms
@@ -76,7 +76,7 @@ Zybooks: CS-260: Data Structures. (n.d.). Retrieved from https://learn.zybooks.c
 // Version     : 1.0
 // Copyright   : Copyright © 2017 SNHU COCE
 // Description : Vector Sorting Algorithms
-//============================================================================
+//==========================================================
 
 #include <algorithm>
 #include <iostream>
@@ -86,9 +86,9 @@ Zybooks: CS-260: Data Structures. (n.d.). Retrieved from https://learn.zybooks.c
 
 using namespace std;
 
-//============================================================================
+//==========================================================
 // Global definitions visible to all methods and classes
-//============================================================================
+//==========================================================
 
 // forward declarations
 double strToDouble(string str, char ch);
@@ -104,9 +104,9 @@ struct Bid {
     }
 };
 
-//============================================================================
+//===========================================================
 // Static methods used for testing
-//============================================================================
+//===========================================================
 
 /**
  * Display the bid information to the console (std::out)
