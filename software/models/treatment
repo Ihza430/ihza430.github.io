@@ -3,6 +3,7 @@ package medical.com.medicalApplication.model;
 /**
  * This class represents a treatment model in the system.
  */
+ 
 public class Treatment {
 	private String treatmentDate;
 	private String diagnose;
