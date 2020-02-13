@@ -1,4 +1,5 @@
 # Software Engineering and Design
+---
 
 ### [Home](https://ihza430.github.io)  | [Code Review](/code_review.html) | [Software Engineering & Design](/software_design.html) | [Data Structures & Algorithms](/data_structures.html) | [Databases](/databases.html)
 
@@ -183,14 +184,14 @@ private static void addPerson(boolean addDoctor, Scanner scanner) {
 <a name="mo"></a>
 ### Models
 
-1. [Allergy](/ihza430.github.io/software/models/allergy)
-2. [Doctor](/ihza430.github.io/software/models/doctor)
-3. [Employee](/ihza430.github.io/software/models/employee)
-4. [Medical Record](/ihza430.github.io/software/models/medicalrecord)
-5. [Medication](/ihza430.github.io/software/models/medication)
-6. [Patient](/ihza430.github.io/software/models/patient)
-7. [Patient History](/ihza430.github.io/software/models/patienthistory)
-8. [Treatment](./software/models/treatment)
+1. [Allergy]()
+2. [Doctor](./ihza430.github.io/software/models/doctor)
+3. [Employee](./ihza430.github.io/software/models/employee)
+4. [Medical Record](./ihza430.github.io/software/models/medicalrecord)
+5. [Medication](./ihza430.github.io/software/models/medication)
+6. [Patient](./ihza430.github.io/software/models/patient)
+7. [Patient History](./ihza430.github.io/software/models/patienthistory)
+8. [Treatment](./ihza430.github.io/software/models/treatment)
 
 <a name="pr"></a>
 ### Prompt
