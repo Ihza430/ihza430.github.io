@@ -190,7 +190,7 @@ private static void addPerson(boolean addDoctor, Scanner scanner) {
 5. [Medication](/ihza430.github.io/software/models/medication)
 6. [Patient](/ihza430.github.io/software/models/patient)
 7. [Patient History](/ihza430.github.io/software/models/patienthistory)
-8. [Treatment](/ihza430.github.io/software/models/treatment)
+8. [Treatment](./software/models/treatment)
 
 <a name="pr"></a>
 ### Prompt
