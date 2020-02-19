@@ -53,6 +53,8 @@ Data structures are important when creating a program. There are many kinds of d
 Algorithms are the underlying power to data structures. Without hashing, sorting, or searching, data structures are only good to organize data. As previously stated, dealing with big data is an issue. Using algorithms like hashing can ease the load. It compacts the amount of data to fewer indices which in turn make for faster searching and takes less memory. These things effect the efficiency and effectiveness of a program. Algorithms allow to organize and search for specific data. For instance, in VectorSorting the list of bids from the file was not ordered and using a sorting algorithm, the program was able to sort them in ascending order. This is helpful especially in this scenario has it is good to know who the highest and lowest bids are.
 
 References
+
+
 AVL Trees in Data Structures. (n.d.). Retrieved from https://www.w3schools.in/data-structures-tutorial/avl-trees/
 
 Bubble Sort Algorithm in Data Structures. (n.d.). Retrieved from https://www.w3schools.in/data-structures-tutorial/sorting-techniques/bubble-sort-algorithm
