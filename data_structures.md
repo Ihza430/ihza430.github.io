@@ -21,7 +21,7 @@ Originally, I had planned to include more data structures and algorithms into th
 
 There are several data structures and algorithms that were explored using the programming language C++. The three data structures were vectors, hash tables, and tree structures. The algorithms explored were search, sort, and hashing/chaining. The following sections will analyze how each data structures and algorithms were used within the program and its effectiveness in performing the required function. The overall program was to display a list in which a user can view, load, remove, or update a list of bids. Some parts of the program were directed in sorting or editing the bidding list in specific ways. 
 
-I.Data Structures
+I. Data Structures
 
 
 Vectors are an ordered list of a certain data type (Zybooks, n.d., 2.6). They are very much alike arrays but can easily resize the list (2.7). A vector has a failsafe in which it checks whether an index is within the vector’s range. In an array, index four has the data 34 already stored. As the program continues, another data is set to index four and hence the data 34 will be overwritten by the new data. In VectorSorting, a vector was utilized to store the bids from the provided file. This data structure is better suited than using an array because a bid can be removed or added and checks the range. 
@@ -32,9 +32,9 @@ Binary trees were the focused tree structure used for the program. A node in a b
 
 Vectors, hash tables, and binary trees are basic types of data structures. There are other types like stacks and AVL tree structures. Stacks is simply inserting or deleting data from one end. Think of a stack of plates. Plates are stacked on top of each other. An individual can remove the plate on the top or add to the top of the stack. It is not the most efficient data structure. The ideal application of stack is reversing a word or when the application needs to be backtracked. For instance, the application employs a list of tasks. Having the list of tasks as a stack can functions well to go back to the previous task. AVL tree structures is a specific type of binary tree (AVL, n.d.). The difference is that the height between the right and left subtrees are one or less. This allows for faster insertion or deletion because the amount of comparisons will be few. The diagram below shows an AVL tree to the left. If a user wanted to delete the seventh node, there would only need to be three comparisons in AVL tree. In the regular tree, there would be seven comparisons made.
 
-![AVL Tree](https://github.com/Ihza430/ihza430.github.io/blob/master/AVL%20Tree.png)
+<img src="images/data_structure/AVLTree.png" alt="Tree">
 
-II.Algorithms
+II. Algorithms
 
 
 Search is basically finding an item within a list or other data structures the match a given key (3.6). This is an important algorithm to have because users would want to find an item in a sea of data. Both in HashTable and BinarySearchTree, a search algorithm was used. When both programs were running and the option to find or remove a bid was executed, the program was able to do so. The program would search for the bid identification and if a bid from the file was a match, it would display or remove bid according to the operation. If there was no bid the matched the bid identification, a message would print saying a bid was not found. 
