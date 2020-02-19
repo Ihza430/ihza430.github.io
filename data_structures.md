@@ -229,9 +229,9 @@ struct Node {
 ```
 
 ```
-//============================================================================
+//=========================================================
 // Binary Search Tree class definition
-//============================================================================
+//=========================================================
 
 /**
  * Define a class containing data members and methods to
@@ -375,7 +375,8 @@ void BinarySearchTree::addNode(Node* node, Bid bid) {
 void BinarySearchTree::inOrder(Node* node) {
 }     
 ```
-Implementation of Binary Search Tree in Main Method
+
+### Implementation of Binary Search Tree in Main Method
 
 ```
 // Define a binary search tree to hold all bids
