@@ -30,7 +30,7 @@ Looking at the process of enhancing at this artifact, I did have some trouble. T
 I. Collection Management
 
 
-	Collection management is an integral part of keeping the database. Internal stakeholders need access to the collection of data at a moment notice. MongoDB stores data that provides high performance and availability among different platforms. A collection is a group of documents. For stakeholders, this would be the information on stocks that can include company names and valuable information about the stock’s performance. If there are already available data, it can be easily imported into Mongo. There is copious amount of data available and for a system to search throughout all the time can lower the performance. To solve this, a user can create single or compound indexes to alleviate this. The following examples are on importing files into databases and creating indexes. 
+Collection management is an integral part of keeping the database. Internal stakeholders need access to the collection of data at a moment notice. MongoDB stores data that provides high performance and availability among different platforms. A collection is a group of documents. For stakeholders, this would be the information on stocks that can include company names and valuable information about the stock’s performance. If there are already available data, it can be easily imported into Mongo. There is copious amount of data available and for a system to search throughout all the time can lower the performance. To solve this, a user can create single or compound indexes to alleviate this. The following examples are on importing files into databases and creating indexes. 
 
 A.	 
 ../startMongod.sh -> Starts mongo within the terminal
