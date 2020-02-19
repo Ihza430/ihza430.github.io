@@ -602,9 +602,12 @@ case 1:
 	loadBids(csvPath, bidTable);
 
 	// Calculate elapsed time and display result
-	ticks = clock() - ticks; // current clock ticks minus starting clock ticks
-	cout << "time: " << ticks << " clock ticks" << endl;
-	cout << "time: " << ticks * 1.0 / CLOCKS_PER_SEC << " seconds" << endl;
+	ticks = clock() - ticks; 
+	// current clock ticks minus starting clock ticks
+	cout << "time: " << ticks
+	<< " clock ticks" << endl;
+	cout << "time: " 
+	<< ticks * 1.0 / CLOCKS_PER_SEC << " seconds" << endl;
 	break;
 
 //Print all bids
@@ -618,7 +621,8 @@ case 3:
 
 	bid = bidTable->Search(bidKey);
 
-	ticks = clock() - ticks;// current clock ticks minus starting clock ticks
+	ticks = clock() - ticks;
+	// current clock ticks minus starting clock ticks
 
 	if (!bid.bidId.empty()) {
 		displayBid(bid);
@@ -626,8 +630,10 @@ case 3:
 		cout << "Bid Id " << bidKey << " not found." << endl;
 	}
 
-	cout << "time: " << ticks << " clock ticks" << endl;
-	cout << "time: " << ticks * 1.0 / CLOCKS_PER_SEC << " seconds" << endl;
+	cout << "time: " << ticks << " 
+	clock ticks" << endl;
+	cout << "time: " << ticks * 1.0
+	/ CLOCKS_PER_SEC << " seconds" << endl;
 	break;
 
 //Remove bids
