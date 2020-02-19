@@ -1,4 +1,4 @@
-## Data Structures & Algorithms
+# Data Structures & Algorithms
 
 ### [Home](https://ihza430.github.io)  | [Code Review](/code_review.html) | [Software Engineering & Design](/software_design.html) | [Data Structures & Algorithms](/data_structures.html) | [Databases](/databases.html)
 
@@ -178,7 +178,7 @@ void selectionSort(vector<Bid>& bids) {
 }
 ```
 
-### Implementation of Sorts in Main Method  
+#### Implementation of Sorts in Main Method  
  
  
 ```
@@ -376,7 +376,7 @@ void BinarySearchTree::inOrder(Node* node) {
 }     
 ```
 
-### Implementation of Binary Search Tree in Main Method
+#### Implementation of Binary Search Tree in Main Method
 
 ```
 // Define a binary search tree to hold all bids
