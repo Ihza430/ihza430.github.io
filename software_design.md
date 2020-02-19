@@ -26,6 +26,7 @@ Agile development helps solve many of these problems. The basic method is to wor
 
 The scrum master is the “coach” of the development team which consist of the tester and developer. It is the scrum master’s job to guide the development team and to facilitate meetings called scrum ceremonies. Scrum ceremonies include sprint planning, daily standups, backlog grooming, and sprint retrospective. All these meetings help guide the team on what tasks to accomplish, their progress, and discuss any problems they are having. Scrum masters are the mediator for collaboration for the development team and the other roles. These meetings can help prepare for coding which leads to the first tools, use case diagrams and sequence diagrams. These tools help the team identify possible classes and the functionality that must be met. 
 
+<img src="UseCaseDiagram.png" alt="Use">
 ![Use Case Diagram](https://github.com/Ihza430/ihza430.github.io/blob/master/images/software/UseCaseDiagram.png)
 ![Sequence Diagram](https://github.com/Ihza430/ihza430.github.io/blob/master/Med%20APP%20Sequence.png)
 
