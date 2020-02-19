@@ -164,7 +164,8 @@ void selectionSort(vector<Bid>& bids) {
 	       int indexSmallesTitle = i;
 
 	       for(int j = i + 1; j < bids.size(); ++j){
-	           if(bids.at(indexSmallesTitle).title.compare(bids.at(j).title) == 1){
+	           if(bids.at(indexSmallesTitle).
+		   title.compare(bids.at(j).title) == 1){
 
 	               indexSmallesTitle = j;
 	           }
@@ -177,6 +178,8 @@ void selectionSort(vector<Bid>& bids) {
 }
 ```
  ### Implementation of Sorts in Main Method  
+ 
+ 
 ```
 // Selection sort and report timing results
 	case 3:
@@ -184,9 +187,12 @@ void selectionSort(vector<Bid>& bids) {
     		selectionSort(bids);
             	ticks = clock() - ticks;
 
-            	cout << bids.size() << " bids sorted" << endl;
-            	cout <<	"time: " << ticks << " clock ticks" << endl;
-            	cout <<	"time: " << ticks * 1.0 / CLOCKS_PER_SEC << " seconds" << endl;
+            	cout << bids.size() 
+		<< " bids sorted" << endl;
+            	cout <<	"time: " 
+		<< ticks << " clock ticks" << endl;
+            	cout <<	"time: " 
+		<< ticks * 1.0 / CLOCKS_PER_SEC << " seconds" << endl;
 
             	break;
 
@@ -197,8 +203,10 @@ void selectionSort(vector<Bid>& bids) {
             	ticks = clock() - ticks;
 
             	cout << bids.size() << " bids sorted" << endl;
-            	cout <<	"time: " << ticks << " clock ticks" << endl;
-            	cout <<	"time: " << ticks * 1.0 / CLOCKS_PER_SEC << " seconds" << endl;
+            	cout <<	"time: " << ticks
+		<< " clock ticks" << endl;
+            	cout <<	"time: " 
+		<< ticks * 1.0 / CLOCKS_PER_SEC << " seconds" << endl;
             	break;
         }
     }
