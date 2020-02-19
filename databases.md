@@ -20,11 +20,11 @@ Looking at the process of enhancing at this artifact, I did have some trouble. T
 ## Enhancement Text
 
 ---
-- Collection Management(#cm)
-- Document Manipulation(#dm)
-- Document Retrieval(#dr)
-- Advanced Programming(#ap)
-- Data Mining(#da)
+- [Collection Management](#cm)
+- [Document Manipulation](#dm)
+- [Document Retrieval](#dr)
+- [Advanced Programming](#ap)
+- [Data Mining](#da)
 
 <a name="cm"></a>
 I. Collection Management
