@@ -19,7 +19,17 @@ Looking at the process of enhancing at this artifact, I did have some trouble. T
 <a name="en"></a>
 ## Enhancement Text
 
+---
+- Collection Management(#cm)
+- Document Manipulation(#dm)
+- Document Retrieval(#dr)
+- Advanced Programming(#ap)
+- Data Mining(#da)
+
+<a name="cm"></a>
 I. Collection Management
+
+
 	Collection management is an integral part of keeping the database. Internal stakeholders need access to the collection of data at a moment notice. MongoDB stores data that provides high performance and availability among different platforms. A collection is a group of documents. For stakeholders, this would be the information on stocks that can include company names and valuable information about the stock’s performance. If there are already available data, it can be easily imported into Mongo. There is copious amount of data available and for a system to search throughout all the time can lower the performance. To solve this, a user can create single or compound indexes to alleviate this. The following examples are on importing files into databases and creating indexes. 
 
 A.	 
@@ -41,7 +51,10 @@ This is like the first index, but more fields are added which makes it a Compoun
 getIndexes() -> gets all the indexes and information on them
 This is to ensure that the following indexes that were made were created properly. 	
 
+<a name="dm"></a>
 II. Document Manipulation
+
+
 Document manipulation is essential as it is the heart of managing the data. It allows to insert, update and delete documents from the collection. Examples are shown below with two options. One is using a prepared file and another is directly on the terminal. 
 
 A. Insert
@@ -77,7 +90,10 @@ Remove -> command to remove document
  
 When trying to find the document with the Ticker value of TEST, there was no results which is to be expected since the document has been deleter. 
 
+<a name="dr"></a>
 III. Document Retrieval
+
+
 Document retrieval is important to any stakeholders as it allows for users to view the information needed to make decisions when working with stocks. Stakeholders need to know the name of the company or what industry a company is a part of. In this section, examples on how to retireve these critical information are shown in two ways. The first is through a text file and the second is directly in the terminal. 
 
 A. Retrieve Documents
@@ -105,7 +121,10 @@ Aggregate -> uses to specify that we will be aggregating
 ({“$match”:{“Sector”:”Healthcare”}}, -> finds documents that match the key/value pair which is the key, Sector having a value of Healthcare.
 {“$group”:{_id:”$Industry”, totalShares:{$sum:”$Share Outstanding}}}) -> specifies that the matching documents will be grouped based on the Industry. For example, all the documents in the healthcare sector that are within the biotechnology industry will be grouped together. The share outstanding key will be summed up from all the documents within that grouping. So for instance if there are three documents within that grouping and have share outstanding of the 3, 4, and 5, the total share will be 12. 
 
+<a name="ap"></a>
 IV. Advanced Programming
+
+
 A.	Restful API
 Restful API allows clients to interact with the database through curl commands. Because of the reusability of the code, clients can enter their own queries when using the curl commands. 
 B.	CRUD Functionality
@@ -126,8 +145,10 @@ i.	Stock Summary Information
 ii. Five Top Stocks
  
 
- 
+<a name="da"></a>
 V. Data Mining
+
+
 	For the purpose of this data mining example, the stocks of multiple companies within the database will be looked at. The internal stakeholders would most likely want to know which companies to invest in the future. A rule of thumb is buy stocks that are low and sell stocks that are high. Using the database, we can determine which stocks have the lowest prices and highest prices in each industry. The reason, an internal stakeholder would want to focus on one particular industry is so that they have expertise in that industry and keep up with trends within the industry. Below are examples of the top 5 highest priced stocks and top 10 lowest priced stock within the Biotechnology industry. The highest priced stock at 275.39 is from the company Regeneron Pharmaceuticals. If a stakeholder had already invested in that stock it would be ideal for them to sell those stocks. 
 
 In terms of buying stocks, Alseres Pharmaceuticals, Inc or Nile Therapeutics, Inc are priced at 0.04 and 0.05 respectively. It would be in the interest of the stakeholder to buy these stocks. 
@@ -140,6 +161,8 @@ Data mining is all about gathering information and determining what it means. If
 
 
 References
+
+
 Parker, T. (2019, June 25). 5 Essentials You Need To Know About Every Stock You Buy. Retrieved from https://www.investopedia.com/financial-edge/0411/5-essential-things-you-need-to-know-about-every-stock-you-buy.aspx.
 
 <a name="co"></a>
