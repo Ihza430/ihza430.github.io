@@ -343,7 +343,8 @@ def create_handler(): #define what to do for creating through URL commands
   return json.loads(json.dumps(data, indent=4, default=json_util.default))
 
 def get_document(key, value): #define for getting document 
-  document = collection.find_one({key:value}) #retrieves document that matches key/value pair
+ #retrieves document that matches key/value pair
+  document = collection.find_one({key:value})
   if not document: 
     abort(404, 'No document matches') 
   
@@ -351,14 +352,17 @@ def get_document(key, value): #define for getting document
 
 @route('/read', method='GET')
 def read_handler(): #define what to do for reading through URL command
-  result = get_document("Ticker", request.query.ticker) #utilizes get_document with Ticker as key and request as value
+
+#utilizes get_document with Ticker as key and request as value
+  result = get_document("Ticker", request.query.ticker) 
   if not result: 
     abort(404, 'No document with Ticker : %s' % request.query.ticker)
     
   return json.loads(json.dumps(result, indent=4, default=json_util.default))
 
-def update_document(key, value, document): #define for updating document
-  #updates document that matches key/value pair and sets whatever is within the document value
+#define for updating document
+def update_document(key, value, document): 
+  #updates document that matches key/value pair and setsthe document value
   result = collection.update({key:value},{ '$set': document }, upsert=False,multi=False) 
   if not result: 
     abort(404, 'No document with %s : %s' % key,value)
@@ -368,14 +372,16 @@ def update_document(key, value, document): #define for updating document
 @route('/update', method='GET')
 def update_handler(): #define what to do for updating through URL command
   doc = get_document("Ticker",request.query.ticker) #utilizes get_document
-  entity=update_document(request.query.ticker, request.query.price, doc) #utilizes update_document
+  #utilizes update_document
+  entity=update_document(request.query.ticker, request.query.price, doc) 
   if not entity: 
     abort(404, 'update error %s' % request.query.result)
     
   return json.loads(json.dumps(entity, indent=4, default=json_util.default)) 
 
 def delete_document(key, value): #define for deleting document
-  result = collection.remove({key:value}) #finds document to delete that match the key/value pair
+#finds document to delete that match the key/value pair
+  result = collection.remove({key:value}) 
   if not result: 
     abort(404, 'No document with %s : %s' % key,value) 
   
@@ -391,7 +397,9 @@ def delete_handler(): #define what to do for deleting through URL command
 
 @route('/report', method='GET')
 def report_handler(): #define what to do for getting a report on specific documents
-  result = collection.find_one({'Ticker':request.query.ticker}, {'Ticker':1, 'Company':1, 'Sector':1, 'Industry':1, 'P/E':1, 'Beta':1, 'Dividend Yield':1,'Price':1})
+  result = collection.find_one({'Ticker':request.query.ticker}, 
+  {'Ticker':1, 'Company':1, 'Sector':1, 'Industry':1, 'P/E':1, 
+  'Beta':1, 'Dividend Yield':1,'Price':1})
   if not result: 
     abort(404, 'No document with Ticker : %s' % request.query.ticker)
     
@@ -400,7 +408,8 @@ def report_handler(): #define what to do for getting a report on specific docume
   
 @route('/top5', method ='GET')
 def top_stocks(): #define what to do to get the top 5 stocks within an industry
-  result = collection.find({"$and":[{"Industry":request.query.industry},{"EPS growth next 5 years":{"$gt":0.3}}]}).limit(5).sort("EPS growth next 5 years", -1)
+  result = collection.find({"$and":[{"Industry":request.query.industry},
+  {"EPS growth next 5 years":{"$gt":0.3}}]}).limit(5).sort("EPS growth next 5 years", -1)
   if not result: 
     abort(404, 'No document that matches')
   
