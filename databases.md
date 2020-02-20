@@ -345,6 +345,7 @@ def read_handler(): #define what to do for reading through URL command
     
   return json.loads(json.dumps(result, indent=4, default=json_util.default))
 ```
+
 ```
 @route('/update', method='GET')
 def update_handler(): #define what to do for updating through URL command
@@ -356,6 +357,7 @@ def update_handler(): #define what to do for updating through URL command
     
   return json.loads(json.dumps(entity, indent=4, default=json_util.default)) 
 ```
+
 ```
 @route('/delete', method='GET')
 def delete_handler(): #define what to do for deleting through URL command
@@ -366,6 +368,7 @@ def delete_handler(): #define what to do for deleting through URL command
     
   return json.loads(json.dumps(result, indent=4, default=json_util.default)) 
 ```
+
 ```
 @route('/report', method='GET')
 #define what to do for getting a report on specific documents
@@ -378,6 +381,7 @@ def report_handler():
     
   return json.loads(json.dumps(result, indent=4, default=json_util.default))
 ```
+
 ```
 @route('/top5', method ='GET')
 #define what to do to get the top 5 stocks within an industry
