@@ -199,7 +199,7 @@ private static void addPerson(boolean addDoctor, Scanner scanner) {
 <a name="pr"></a>
 ### Prompt
 
-[Medical Record Prompt](https://github.com/Ihza430/ihza430.github.io/blob/master/software/prompts/medicalrecord)
+1. [Medical Record Prompt](https://github.com/Ihza430/ihza430.github.io/blob/master/software/prompts/medicalrecord)
 
 <a name="sr"></a>
 ### Services
