@@ -27,7 +27,7 @@ Looking at the process of enhancing at this artifact, I did have some trouble. T
 - [Data Mining](#da)
 
 <a name="cm"></a>
-I. Collection Management
+### I. Collection Management
 
 
 Collection management is an integral part of keeping the database. Internal stakeholders need access to the collection of data at a moment notice. MongoDB stores data that provides high performance and availability among different platforms. A collection is a group of documents. For stakeholders, this would be the information on stocks that can include company names and valuable information about the stock’s performance. If there are already available data, it can be easily imported into Mongo. There is copious amount of data available and for a system to search throughout all the time can lower the performance. To solve this, a user can create single or compound indexes to alleviate this. The following examples are on importing files into databases and creating indexes. 
@@ -56,7 +56,7 @@ getIndexes() -> gets all the indexes and information on them
 This is to ensure that the following indexes that were made were created properly. 	
 
 <a name="dm"></a>
-II. Document Manipulation
+### II. Document Manipulation
 
 
 Document manipulation is essential as it is the heart of managing the data. It allows to insert, update and delete documents from the collection. Examples are shown below with two options. One is using a prepared file and another is directly on the terminal. 
@@ -74,6 +74,7 @@ find -> used to find documents within the specified database and collection.
 ({“Ticker”:”TEST”}) -> to determine which document to find. In this case the key/field (Ticker) that matches “TEST” of the inserted document. 
 pretty() -> organizes the result in an easy to view manner. 
 <img src="images/databases/File08.png" alt="Image 8">
+
 To test that the document was properly inserted, the document with the name of the inserted document was found.
 
 
@@ -88,7 +89,9 @@ Update -> commands to update document
 {‘$set’:{“Volume”:700}}) -> sets which key/value pair to update to. For instance, if volume was originally 100, this will change it to 700. 
 <img src="images/databases/File11.png" alt="Image 11">
 <img src="images/databases/File12.png" alt="Image 12">
+
 The document that matches the ticker, TEST was found. It can be seen that the volume has been added as a key/value pair which makes this a successful update. 
+
 
 C. Delete
  
@@ -100,10 +103,11 @@ Remove -> command to remove document
 ({“Ticker”:”HELLO”}) -> specifies what document to remove 
 <img src="images/databases/File15.png" alt="Image 15">
 <img src="images/databases/File16.png" alt="Image 16">
+
 When trying to find the document with the Ticker value of TEST, there was no results which is to be expected since the document has been deleter. 
 
 <a name="dr"></a>
-III. Document Retrieval
+### III. Document Retrieval
 
 
 Document retrieval is important to any stakeholders as it allows for users to view the information needed to make decisions when working with stocks. Stakeholders need to know the name of the company or what industry a company is a part of. In this section, examples on how to retireve these critical information are shown in two ways. The first is through a text file and the second is directly in the terminal. 
@@ -128,6 +132,7 @@ ii. Industry
 <img src="images/databases/File19.png" alt="Image 19"> 
 Similar process, use python followed by the location of the file
 <img src="images/databases/File20.png" alt="Image 20">
+
 ({“Industry”:”Medical Laboratories & Research”}, -> specifies which documents to find
 {“Ticker”:1}) ->specifies which key and value pair to view. (0 would specifiy which key/value pair not to view)
 This statement finds all the documents that are within the industry of medical laboratories and research. It will print out the ticker value of all documents that match. This allows for stake holders to easily find the Ticker value for a specific industry or sector that they might be looking at. The key/value pari can be changed to suit the needs of the stakeholder
@@ -138,12 +143,13 @@ B. Aggregation
 <img src="images/databases/File21.png" alt="Image 21">
 Similar to previous ones, use python followed by the location of the file
 <img src="images/databases/File22.png" alt="Image 22">
+
 Aggregate -> uses to specify that we will be aggregating
 ({“$match”:{“Sector”:”Healthcare”}}, -> finds documents that match the key/value pair which is the key, Sector having a value of Healthcare.
 {“$group”:{_id:”$Industry”, totalShares:{$sum:”$Share Outstanding}}}) -> specifies that the matching documents will be grouped based on the Industry. For example, all the documents in the healthcare sector that are within the biotechnology industry will be grouped together. The share outstanding key will be summed up from all the documents within that grouping. So for instance if there are three documents within that grouping and have share outstanding of the 3, 4, and 5, the total share will be 12. 
 
 <a name="ap"></a>
-IV. Advanced Programming
+### IV. Advanced Programming
 
 
 A.	Restful API
@@ -189,7 +195,7 @@ ii. Five Top Stocks
  
 
 <a name="da"></a>
-V. Data Mining
+### V. Data Mining
 
 
 For the purpose of this data mining example, the stocks of multiple companies within the database will be looked at. The internal stakeholders would most likely want to know which companies to invest in the future. A rule of thumb is buy stocks that are low and sell stocks that are high. Using the database, we can determine which stocks have the lowest prices and highest prices in each industry. The reason, an internal stakeholder would want to focus on one particular industry is so that they have expertise in that industry and keep up with trends within the industry. Below are examples of the top 5 highest priced stocks and top 10 lowest priced stock within the Biotechnology industry. The highest priced stock at 275.39 is from the company Regeneron Pharmaceuticals. If a stakeholder had already invested in that stock it would be ideal for them to sell those stocks. 
