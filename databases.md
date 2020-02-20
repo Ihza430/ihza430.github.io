@@ -319,7 +319,8 @@ Parker, T. (2019, June 25). 5 Essentials You Need To Know About Every Stock You 
 
 ```
 def insert_document(document): #define for inserting documents
-  try: result=collection.insertOne(document) #inserts document into collection stocks
+ #inserts document into collection stocks
+  try: result=collection.insertOne(document)
 
   except ValidationError as ve: 
     abort(400, str(ve)) 
@@ -363,7 +364,8 @@ def read_handler(): #define what to do for reading through URL command
 #define for updating document
 def update_document(key, value, document): 
   #updates document that matches key/value pair and setsthe document value
-  result = collection.update({key:value},{ '$set': document }, upsert=False,multi=False) 
+  result = collection.update({key:value},{ '$set': document }, 
+  upsert=False,multi=False) 
   if not result: 
     abort(404, 'No document with %s : %s' % key,value)
     
@@ -389,14 +391,16 @@ def delete_document(key, value): #define for deleting document
 
 @route('/delete', method='GET')
 def delete_handler(): #define what to do for deleting through URL command
-  result = delete_document("Ticker", request.query.ticker) #utilizes delete_document
+#utilizes delete_document
+  result = delete_document("Ticker", request.query.ticker) 
   if not result: 
     abort(404, 'No document with %s : %s' % key,value)
     
   return json.loads(json.dumps(result, indent=4, default=json_util.default)) 
 
 @route('/report', method='GET')
-def report_handler(): #define what to do for getting a report on specific documents
+#define what to do for getting a report on specific documents
+def report_handler(): 
   result = collection.find_one({'Ticker':request.query.ticker}, 
   {'Ticker':1, 'Company':1, 'Sector':1, 'Industry':1, 'P/E':1, 
   'Beta':1, 'Dividend Yield':1,'Price':1})
@@ -409,7 +413,8 @@ def report_handler(): #define what to do for getting a report on specific docume
 @route('/top5', method ='GET')
 def top_stocks(): #define what to do to get the top 5 stocks within an industry
   result = collection.find({"$and":[{"Industry":request.query.industry},
-  {"EPS growth next 5 years":{"$gt":0.3}}]}).limit(5).sort("EPS growth next 5 years", -1)
+  {"EPS growth next 5 years":{"$gt":0.3}}]}).limit(5).
+  sort("EPS growth next 5 years", -1)
   if not result: 
     abort(404, 'No document that matches')
   
