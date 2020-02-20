@@ -411,7 +411,8 @@ def report_handler():
 
   
 @route('/top5', method ='GET')
-def top_stocks(): #define what to do to get the top 5 stocks within an industry
+#define what to do to get the top 5 stocks within an industry
+def top_stocks(): 
   result = collection.find({"$and":[{"Industry":request.query.industry},
   {"EPS growth next 5 years":{"$gt":0.3}}]}).limit(5).
   sort("EPS growth next 5 years", -1)
