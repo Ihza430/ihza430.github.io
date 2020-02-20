@@ -1,0 +1,31 @@
+import json
+import sys
+import datetime
+from bson import json_util
+from pymongo import MongoClient, UpdateOne
+
+connection = MongoClient('localhost', 27017)
+db = connection['market']
+collection = db['stocks']
+
+#Update the matching document with new values
+
+
+def update_document(key, value, document):
+  result = collection.update({key:value},{ '$set': document }, upsert=False,multi=False)
+  if not result: 
+    abort(404, 'No document with %s : %s' % key,value)
+    
+  return json.loads(json.dumps(result, indent=4, default=json_util.default)) 
+    
+  
+def main():
+  key = "Ticker"
+  value = "TEST"
+  document = {"Volume": 200}
+  print update_document(key, value, document)
+  
+main()
+
+  
+
