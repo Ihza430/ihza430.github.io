@@ -1,0 +1,21 @@
+import json
+import sys
+from bson import json_util
+from pymongo import MongoClient
+
+#Aggregate Data from a queried sector grouped by the Industry and listing #the sum of Outstanding Share
+
+connection = MongoClient('localhost', 27017)
+db = connection['market']
+collection = db['stocks']
+
+def aggregate(value): #defines aggregate action
+  agr = [{"$match":{"Sector":value}},{"$group": {'_id': "$Industry", 'totalShares': {'$sum': "$Shares Outstanding" }}}]
+  val = list(collection.aggregate(agr))
+  print(val)
+  
+def main():
+  value = "Healthcare"
+  print aggregate(value)
+  
+main()
