@@ -1,0 +1,26 @@
+import json
+import sys
+from bson import json_util
+from pymongo import MongoClient
+
+connection = MongoClient('localhost', 27017)
+db = connection['market']
+collection = db['stocks']
+
+#Retrieves the documents that match alone with the ticker value
+
+  
+def get_document(key, value): 
+  result = collection.find({key:value}, {'Ticker':1})
+  
+  for doc in result:
+    print(doc)
+
+
+def main():
+
+  key = "Industry"
+  value = "Medical Laboratories & Research"
+  print get_document(key, value)
+
+main()
