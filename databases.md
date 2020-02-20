@@ -74,11 +74,15 @@ A. Insert
 
 
 To run the text file, python was used followed by the location of the text file within the directory. The result is a number which corresponds to the unique ID number given when inserting the document.
+
+
 <img src="images/databases/File06.png" alt="Image 6">
 
 
 insert -> commands to insert following data
 ({Ticker:’HELLO’, Company:’Project INC.’…}) -> key/value pairs to be inserted. Each pair is separated by a comma.
+
+
 <img src="images/databases/File07.png" alt="Image 7">
 
 
@@ -97,12 +101,16 @@ B. Update
 
 
 Similar to Insert above, use python followed by the location of the text file. 
+
+
 <img src="images/databases/File10.png" alt="Image 10">
 
 
 Update -> commands to update document
 {“Ticker”:”HELLO”}, -> specifies which document to update
-{‘$set’:{“Volume”:700}}) -> sets which key/value pair to update to. For instance, if volume was originally 100, this will change it to 700. 
+{‘$set’:{“Volume”:700}}) -> sets which key/value pair to update to. For instance, if volume was originally 100, this will change it to 700.
+
+
 <img src="images/databases/File11.png" alt="Image 11">
 <img src="images/databases/File12.png" alt="Image 12">
 
@@ -116,11 +124,15 @@ C. Delete
 
 
 Similar to those above, use python followed by the location of the text file. 
+
+
 <img src="images/databases/File14.png" alt="Image 14">
 
 
 Remove -> command to remove document
 ({“Ticker”:”HELLO”}) -> specifies what document to remove 
+
+
 <img src="images/databases/File15.png" alt="Image 15">
 <img src="images/databases/File16.png" alt="Image 16">
 
@@ -142,6 +154,8 @@ i. 50-Day Simple Moving Average
 
 
 Similar process, use python followed by the location of the text file. 
+
+
 <img src="images/databases/File18.png" alt="Image 18">
 
 
@@ -157,6 +171,8 @@ ii. Industry
 
 
 Similar process, use python followed by the location of the file
+
+
 <img src="images/databases/File20.png" alt="Image 20">
 
 ({“Industry”:”Medical Laboratories & Research”}, -> specifies which documents to find
@@ -170,6 +186,8 @@ B. Aggregation
 
 
 Similar to previous ones, use python followed by the location of the file
+
+
 <img src="images/databases/File22.png" alt="Image 22">
 
 Aggregate -> uses to specify that we will be aggregating
