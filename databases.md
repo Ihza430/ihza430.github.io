@@ -35,7 +35,11 @@ Collection management is an integral part of keeping the database. Internal stak
 A. Starting and Importing in Mongo
 <img src="images/databases/File01.png" alt="Image 1">
 ../startMongod.sh -> Starts mongo within the terminal
+
+
 cd datasets/ -> Changes the directory to datasets for importing
+
+
 mongoimport –db market –collection stocks ./stocks.json -> Imports the documents from the file stocks.json to the database (db) market within the collection stocks. 
 
 B. Index
@@ -45,7 +49,11 @@ B. Index
 
 
 db.stocks -> distinguishes what database a collection to use
+
+
 ensureIndex ->commands to create index (Note: can use createIndex)
+
+
 ({“Company”:1}) -> specifies the key/field to include in the index. 1 is for ascending order. If -1 that is for descending order.
 	This creates an index with all the company names from the collection stocks. Stakeholders will be able to retrieve the names of 	the companies that have stocks faster. 
   
@@ -80,6 +88,8 @@ To run the text file, python was used followed by the location of the text file 
 
 
 insert -> commands to insert following data
+
+
 ({Ticker:’HELLO’, Company:’Project INC.’…}) -> key/value pairs to be inserted. Each pair is separated by a comma.
 
 
@@ -87,8 +97,14 @@ insert -> commands to insert following data
 
 
 find -> used to find documents within the specified database and collection.
+
+
 ({“Ticker”:”TEST”}) -> to determine which document to find. In this case the key/field (Ticker) that matches “TEST” of the inserted document. 
+
+
 pretty() -> organizes the result in an easy to view manner. 
+
+
 <img src="images/databases/File08.png" alt="Image 8">
 
 To test that the document was properly inserted, the document with the name of the inserted document was found.
@@ -107,7 +123,11 @@ Similar to Insert above, use python followed by the location of the text file.
 
 
 Update -> commands to update document
+
+
 {“Ticker”:”HELLO”}, -> specifies which document to update
+
+
 {‘$set’:{“Volume”:700}}) -> sets which key/value pair to update to. For instance, if volume was originally 100, this will change it to 700.
 
 
@@ -130,6 +150,8 @@ Similar to those above, use python followed by the location of the text file.
 
 
 Remove -> command to remove document
+
+
 ({“Ticker”:”HELLO”}) -> specifies what document to remove 
 
 
@@ -160,8 +182,14 @@ Similar process, use python followed by the location of the text file.
 
 
 ({“50-Day Simple Moving Average”: -> specifies which key to look at for matching
+
+
 {“$gt”:0.01, “$lt”:0.06}}) -> these are the values for the key to match. $gt means greater than. $lt means less than. In simple terms, this statement reads a 50-Day Simple Moving Average between the ranges od 0.01-0.06.
+
+
 Count() -> counts the number of documents that match this criteria
+
+
 The function was to count the number of documents that have a 50-Day Simple Moving Average within the range. The range for this specific case was between 0.01 and 0.06. The result was 2,086. Finding certain documents within a range for a specific key/value pair is important to stakeholders if they are trying to find specific stocks within them. For instance, if an internal stakeholder was looking at the risk in investing in a stock, they would look at the key Beta. The range of anything less than one is a low risk stock. This would easily determine how many stocks are low risk. 
 
 ii. Industry
@@ -176,7 +204,11 @@ Similar process, use python followed by the location of the file
 <img src="images/databases/File20.png" alt="Image 20">
 
 ({“Industry”:”Medical Laboratories & Research”}, -> specifies which documents to find
+
+
 {“Ticker”:1}) ->specifies which key and value pair to view. (0 would specifiy which key/value pair not to view)
+
+
 This statement finds all the documents that are within the industry of medical laboratories and research. It will print out the ticker value of all documents that match. This allows for stake holders to easily find the Ticker value for a specific industry or sector that they might be looking at. The key/value pari can be changed to suit the needs of the stakeholder
 
 B. Aggregation
@@ -191,7 +223,10 @@ Similar to previous ones, use python followed by the location of the file
 <img src="images/databases/File22.png" alt="Image 22">
 
 Aggregate -> uses to specify that we will be aggregating
+
+
 ({“$match”:{“Sector”:”Healthcare”}}, -> finds documents that match the key/value pair which is the key, Sector having a value of Healthcare.
+
 {“$group”:{_id:”$Industry”, totalShares:{$sum:”$Share Outstanding}}}) -> specifies that the matching documents will be grouped based on the Industry. For example, all the documents in the healthcare sector that are within the biotechnology industry will be grouped together. The share outstanding key will be summed up from all the documents within that grouping. So for instance if there are three documents within that grouping and have share outstanding of the 3, 4, and 5, the total share will be 12. 
 
 <a name="ap"></a>
