@@ -42,16 +42,22 @@ B. Index
 
 
 1. <img src="images/databases/File02.png" alt="Image 2">
+
+
 db.stocks -> distinguishes what database a collection to use
 ensureIndex ->commands to create index (Note: can use createIndex)
 ({“Company”:1}) -> specifies the key/field to include in the index. 1 is for ascending order. If -1 that is for descending order.
 	This creates an index with all the company names from the collection stocks. Stakeholders will be able to retrieve the names of 	the companies that have stocks faster. 
   
-2. <img src="images/databases/File03.png" alt="Image 3">	  
+2. <img src="images/databases/File03.png" alt="Image 3">
+
+
 ({“Company”:1, “Price”:1, “P/E”:1, …}) -> specifies the keys/fields to be included in the index. Each key/field are separated		 by a comma. 
 This is like the first index, but more fields are added which makes it a Compound index. The keys/fields included are Company, Price, P/E, Beta, and Dividend. The company name is important to know who to invest in. Price, P/E, Beta, and Dividend are great indicators to determine whether to invest in the company’s stocks or not (Parker, 2019). 
 
 3. <img src="images/databases/File04.png" alt="Image 4"> 
+
+
 getIndexes() -> gets all the indexes and information on them
 This is to ensure that the following indexes that were made were created properly. 	
 
@@ -65,11 +71,17 @@ A. Insert
 
 
 <img src="images/databases/File05.png" alt="Image 5">
+
+
 To run the text file, python was used followed by the location of the text file within the directory. The result is a number which corresponds to the unique ID number given when inserting the document.
 <img src="images/databases/File06.png" alt="Image 6">
+
+
 insert -> commands to insert following data
 ({Ticker:’HELLO’, Company:’Project INC.’…}) -> key/value pairs to be inserted. Each pair is separated by a comma.
 <img src="images/databases/File07.png" alt="Image 7">
+
+
 find -> used to find documents within the specified database and collection.
 ({“Ticker”:”TEST”}) -> to determine which document to find. In this case the key/field (Ticker) that matches “TEST” of the inserted document. 
 pretty() -> organizes the result in an easy to view manner. 
@@ -82,8 +94,12 @@ B. Update
 
 
 <img src="images/databases/File09.png" alt="Image 9">
+
+
 Similar to Insert above, use python followed by the location of the text file. 
 <img src="images/databases/File10.png" alt="Image 10">
+
+
 Update -> commands to update document
 {“Ticker”:”HELLO”}, -> specifies which document to update
 {‘$set’:{“Volume”:700}}) -> sets which key/value pair to update to. For instance, if volume was originally 100, this will change it to 700. 
@@ -97,8 +113,12 @@ C. Delete
  
  
 <img src="images/databases/File13.png" alt="Image 13">
+
+
 Similar to those above, use python followed by the location of the text file. 
 <img src="images/databases/File14.png" alt="Image 14">
+
+
 Remove -> command to remove document
 ({“Ticker”:”HELLO”}) -> specifies what document to remove 
 <img src="images/databases/File15.png" alt="Image 15">
@@ -119,8 +139,12 @@ i. 50-Day Simple Moving Average
 
 
 <img src="images/databases/File17.png" alt="Image 17">
+
+
 Similar process, use python followed by the location of the text file. 
 <img src="images/databases/File18.png" alt="Image 18">
+
+
 ({“50-Day Simple Moving Average”: -> specifies which key to look at for matching
 {“$gt”:0.01, “$lt”:0.06}}) -> these are the values for the key to match. $gt means greater than. $lt means less than. In simple terms, this statement reads a 50-Day Simple Moving Average between the ranges od 0.01-0.06.
 Count() -> counts the number of documents that match this criteria
@@ -130,6 +154,8 @@ ii. Industry
  
  
 <img src="images/databases/File19.png" alt="Image 19"> 
+
+
 Similar process, use python followed by the location of the file
 <img src="images/databases/File20.png" alt="Image 20">
 
@@ -141,6 +167,8 @@ B. Aggregation
 
 
 <img src="images/databases/File21.png" alt="Image 21">
+
+
 Similar to previous ones, use python followed by the location of the file
 <img src="images/databases/File22.png" alt="Image 22">
 
