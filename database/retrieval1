@@ -1,0 +1,28 @@
+import json
+import sys
+from bson import json_util
+from pymongo import MongoClient
+
+connection = MongoClient('localhost', 27017)
+db = connection['market']
+collection = db['stocks']
+
+#Retrieves number of documents that are within the range of values
+
+
+def get_document(key, value1, value2): 
+  document = collection.find({key:{"$gt":value1, "$lt":value2}}).count()
+  
+  if not document: 
+    abort(404, 'No document with matching range') 
+  
+  return document
+  
+def main():
+
+  key = "50-Day Simple Moving Average"
+  value1 = 0.01
+  value2 = 0.06
+  print get_document(key, value1, value2)
+
+main()
