@@ -334,6 +334,8 @@ def create_handler(): #define what to do for creating through URL commands
  
   return json.loads(json.dumps(data, indent=4, default=json_util.default))
 ```
+
+
 ```
 @route('/read', method='GET')
 def read_handler(): #define what to do for reading through URL command
@@ -345,6 +347,7 @@ def read_handler(): #define what to do for reading through URL command
     
   return json.loads(json.dumps(result, indent=4, default=json_util.default))
 ```
+
 
 ```
 @route('/update', method='GET')
@@ -358,6 +361,7 @@ def update_handler(): #define what to do for updating through URL command
   return json.loads(json.dumps(entity, indent=4, default=json_util.default)) 
 ```
 
+
 ```
 @route('/delete', method='GET')
 def delete_handler(): #define what to do for deleting through URL command
@@ -368,6 +372,7 @@ def delete_handler(): #define what to do for deleting through URL command
     
   return json.loads(json.dumps(result, indent=4, default=json_util.default)) 
 ```
+
 
 ```
 @route('/report', method='GET')
@@ -381,6 +386,7 @@ def report_handler():
     
   return json.loads(json.dumps(result, indent=4, default=json_util.default))
 ```
+
 
 ```
 @route('/top5', method ='GET')
