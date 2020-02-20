@@ -319,7 +319,8 @@ Parker, T. (2019, June 25). 5 Essentials You Need To Know About Every Stock You 
 
 ```
 @route('/create', method='POST') 
-def create_handler(): #define what to do for creating through URL commands
+#define what to do for creating through URL commands
+def create_handler(): 
   data = request.body.readline() 
   print data
   if not data:
@@ -328,49 +329,58 @@ def create_handler(): #define what to do for creating through URL commands
     if not entity.has_key('id'):
       abort(400, 'No id specified') 
     try:
-      insert_document(entity) #utilizes insert_document
+    #utilizes insert_document
+      insert_document(entity) 
     except ValidationError as ve:
       abort(400, str(ve))
  
-  return json.loads(json.dumps(data, indent=4, default=json_util.default))
+  return json.loads
+  (json.dumps(data, indent=4, default=json_util.default))
 ```
 
 
 ```
 @route('/read', method='GET')
-def read_handler(): #define what to do for reading through URL command
+#define what to do for reading through URL command
+def read_handler(): 
 
 #utilizes get_document with Ticker as key and request as value
   result = get_document("Ticker", request.query.ticker) 
   if not result: 
     abort(404, 'No document with Ticker : %s' % request.query.ticker)
     
-  return json.loads(json.dumps(result, indent=4, default=json_util.default))
+  return json.loads
+  (json.dumps(result, indent=4, default=json_util.default))
 ```
 
 
 ```
 @route('/update', method='GET')
-def update_handler(): #define what to do for updating through URL command
-  doc = get_document("Ticker",request.query.ticker) #utilizes get_document
+#define what to do for updating through URL command
+def update_handler():
+#utilizes get_document
+  doc = get_document("Ticker",request.query.ticker) 
   #utilizes update_document
   entity=update_document(request.query.ticker, request.query.price, doc) 
   if not entity: 
     abort(404, 'update error %s' % request.query.result)
     
-  return json.loads(json.dumps(entity, indent=4, default=json_util.default)) 
+  return json.loads
+  (json.dumps(entity, indent=4, default=json_util.default)) 
 ```
 
 
 ```
 @route('/delete', method='GET')
-def delete_handler(): #define what to do for deleting through URL command
+ #define what to do for deleting through URL command
+def delete_handler():
 #utilizes delete_document
   result = delete_document("Ticker", request.query.ticker) 
   if not result: 
     abort(404, 'No document with %s : %s' % key,value)
     
-  return json.loads(json.dumps(result, indent=4, default=json_util.default)) 
+  return json.loads
+  (json.dumps(result, indent=4, default=json_util.default)) 
 ```
 
 
@@ -384,7 +394,8 @@ def report_handler():
   if not result: 
     abort(404, 'No document with Ticker : %s' % request.query.ticker)
     
-  return json.loads(json.dumps(result, indent=4, default=json_util.default))
+  return json.loads
+  (json.dumps(result, indent=4, default=json_util.default))
 ```
 
 
@@ -392,7 +403,8 @@ def report_handler():
 @route('/top5', method ='GET')
 #define what to do to get the top 5 stocks within an industry
 def top_stocks(): 
-  result = collection.find({"$and":[{"Industry":request.query.industry},
+  result = collection.find({"$and":[
+  {"Industry":request.query.industry},
   {"EPS growth next 5 years":{"$gt":0.3}}]}).limit(5).
   sort("EPS growth next 5 years", -1)
   if not result: 
@@ -400,6 +412,7 @@ def top_stocks():
   
   for doc in result:
     print doc
-  return json.loads(json.dumps(doc, indent=4, default=json_util.default))
+  return json.loads
+  (json.dumps(doc, indent=4, default=json_util.default))
                             
 ```
