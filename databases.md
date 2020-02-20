@@ -304,13 +304,13 @@ Parker, T. (2019, June 25). 5 Essentials You Need To Know About Every Stock You 
 
 ---
 - [Restful API](#ra)
-- [Insert]
-- [Update]
-- [Delete]
-- [Retrieval 1]
-- [Retrieval 2]
-- [Aggregate 1]
-- [Aggregate 2]
+- [Insert](https://github.com/Ihza430/ihza430.github.io/blob/master/database/insert)
+- [Update](https://github.com/Ihza430/ihza430.github.io/blob/master/database/update)
+- [Delete](https://github.com/Ihza430/ihza430.github.io/blob/master/database/delete)
+- [Retrieval 1](https://github.com/Ihza430/ihza430.github.io/blob/master/database/retrieval1)
+- [Retrieval 2](https://github.com/Ihza430/ihza430.github.io/blob/master/database/retrieval2)
+- [Aggregate 1](https://github.com/Ihza430/ihza430.github.io/blob/master/database/aggregate1)
+- [Aggregate 2](https://github.com/Ihza430/ihza430.github.io/blob/master/database/aggregate2)
 
 <a name="ra"></a>
 ### Restful API
