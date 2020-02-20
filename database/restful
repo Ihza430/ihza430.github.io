@@ -1,0 +1,108 @@
+#!/usr/bin/python
+import json
+from bson import json_util
+import bottle
+from bottle import run, request, abort, get, post, delete,route
+import sys
+from pymongo import MongoClient, InsertOne
+
+connection = MongoClient('localhost', 27017)
+db = connection['market']
+collection = db['stocks']
+
+#RESTFUL API to utilize curl commands
+
+
+def insert_document(document): #define for inserting documents
+  try: result=collection.insertOne(document) #inserts document into collection stocks
+
+  except ValidationError as ve: 
+    abort(400, str(ve)) 
+  
+  return result
+
+@route('/create', method='POST') 
+def create_handler(): #define what to do for creating through URL commands
+  data = request.body.readline() 
+  print data
+  if not data:
+    abort(400, 'No data received') 
+    entity = json.loads(data)
+    if not entity.has_key('id'):
+      abort(400, 'No id specified') 
+    try:
+      insert_document(entity) #utilizes insert_document
+    except ValidationError as ve:
+      abort(400, str(ve))
+ 
+  return json.loads(json.dumps(data, indent=4, default=json_util.default))
+
+def get_document(key, value): #define for getting document 
+  document = collection.find_one({key:value}) #retrieves document that matches key/value pair
+  if not document: 
+    abort(404, 'No document matches') 
+  
+  return document
+
+@route('/read', method='GET')
+def read_handler(): #define what to do for reading through URL command
+  result = get_document("Ticker", request.query.ticker) #utilizes get_document with Ticker as key and request as value
+  if not result: 
+    abort(404, 'No document with Ticker : %s' % request.query.ticker)
+    
+  return json.loads(json.dumps(result, indent=4, default=json_util.default))
+
+def update_document(key, value, document): #define for updating document
+  #updates document that matches key/value pair and sets whatever is within the document value
+  result = collection.update({key:value},{ '$set': document }, upsert=False,multi=False) 
+  if not result: 
+    abort(404, 'No document with %s : %s' % key,value)
+    
+  return json.loads(json.dumps(result, indent=4, default=json_util.default)) 
+
+@route('/update', method='GET')
+def update_handler(): #define what to do for updating through URL command
+  doc = get_document("Ticker",request.query.ticker) #utilizes get_document
+  entity=update_document(request.query.ticker, request.query.price, doc) #utilizes update_document
+  if not entity: 
+    abort(404, 'update error %s' % request.query.result)
+    
+  return json.loads(json.dumps(entity, indent=4, default=json_util.default)) 
+
+def delete_document(key, value): #define for deleting document
+  result = collection.remove({key:value}) #finds document to delete that match the key/value pair
+  if not result: 
+    abort(404, 'No document with %s : %s' % key,value) 
+  
+  return json.loads(json.dumps(result, indent=4, default=json_util.default)) 
+
+@route('/delete', method='GET')
+def delete_handler(): #define what to do for deleting through URL command
+  result = delete_document("Ticker", request.query.ticker) #utilizes delete_document
+  if not result: 
+    abort(404, 'No document with %s : %s' % key,value)
+    
+  return json.loads(json.dumps(result, indent=4, default=json_util.default)) 
+
+@route('/report', method='GET')
+def report_handler(): #define what to do for getting a report on specific documents
+  result = collection.find_one({'Ticker':request.query.ticker}, {'Ticker':1, 'Company':1, 'Sector':1, 'Industry':1, 'P/E':1, 'Beta':1, 'Dividend Yield':1,'Price':1})
+  if not result: 
+    abort(404, 'No document with Ticker : %s' % request.query.ticker)
+    
+  return json.loads(json.dumps(result, indent=4, default=json_util.default))
+
+  
+@route('/top5', method ='GET')
+def top_stocks(): #define what to do to get the top 5 stocks within an industry
+  result = collection.find({"$and":[{"Industry":request.query.industry},{"EPS growth next 5 years":{"$gt":0.3}}]}).limit(5).sort("EPS growth next 5 years", -1)
+  if not result: 
+    abort(404, 'No document that matches')
+  
+  for doc in result:
+    print doc
+  return json.loads(json.dumps(doc, indent=4, default=json_util.default))
+                            
+if __name__ == '__main__': #declare instance of request
+    #app.run(debug=True)
+    run(host='localhost', port=8080)
