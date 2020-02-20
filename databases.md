@@ -76,6 +76,7 @@ pretty() -> organizes the result in an easy to view manner.
 <img src="images/databases/File08.png" alt="Image 8">
 To test that the document was properly inserted, the document with the name of the inserted document was found.
 
+
 B. Update
 
 
