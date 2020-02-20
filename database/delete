@@ -1,0 +1,27 @@
+import json
+import sys
+import datetime
+from bson import json_util
+from pymongo import MongoClient, DeleteOne
+
+connection = MongoClient('localhost', 27017)
+db = connection['market']
+collection = db['stocks']
+
+#Deletes a specified document
+
+
+def delete_document(key, value):
+  result = collection.delete_one({key:value}) #finds documents to delete that match the key/value pair
+  if not result: 
+    abort(404, 'No document with %s : %s' % key,value) #if no documents match this will be printed out
+  
+  return result
+
+def main(): #defines main
+  key = "Ticker"
+  value = "TEST"
+  
+  print delete_document(key, value)
+  
+main()
