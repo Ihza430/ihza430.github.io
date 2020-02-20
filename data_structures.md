@@ -21,7 +21,7 @@ Originally, I had planned to include more data structures and algorithms into th
 
 There are several data structures and algorithms that were explored using the programming language C++. The three data structures were vectors, hash tables, and tree structures. The algorithms explored were search, sort, and hashing/chaining. The following sections will analyze how each data structures and algorithms were used within the program and its effectiveness in performing the required function. The overall program was to display a list in which a user can view, load, remove, or update a list of bids. Some parts of the program were directed in sorting or editing the bidding list in specific ways. 
 
-I. Data Structures
+### I. Data Structures
 
 
 Vectors are an ordered list of a certain data type (Zybooks, n.d., 2.6). They are very much alike arrays but can easily resize the list (2.7). A vector has a failsafe in which it checks whether an index is within the vector’s range. In an array, index four has the data 34 already stored. As the program continues, another data is set to index four and hence the data 34 will be overwritten by the new data. In VectorSorting, a vector was utilized to store the bids from the provided file. This data structure is better suited than using an array because a bid can be removed or added and checks the range. 
@@ -34,7 +34,7 @@ Vectors, hash tables, and binary trees are basic types of data structures. There
 
 <img src="images/data_structure/AVLTree.png" alt="Tree">
 
-II. Algorithms
+### II. Algorithms
 
 
 Search is basically finding an item within a list or other data structures the match a given key (3.6). This is an important algorithm to have because users would want to find an item in a sea of data. Both in HashTable and BinarySearchTree, a search algorithm was used. When both programs were running and the option to find or remove a bid was executed, the program was able to do so. The program would search for the bid identification and if a bid from the file was a match, it would display or remove bid according to the operation. If there was no bid the matched the bid identification, a message would print saying a bid was not found. 
@@ -45,7 +45,7 @@ Hashing and chaining is the underlying algorithm that makes hash tables the way 
 
 In addition to these algorithms, there a few other specific types of searches and sorts that will be explained. The other searches that will be talked about are linear and binary. A linear search is looking through the data sequentially (Searching Techniques, n.d.). This is not the most efficient way of searching as it would require numerous amounts of comparisons until a match is found. The binary search is the faster and more efficient search. The data must be sorted. It will compare the data from the beginning of the list and the middle of the list. If it does not find a match it will look split the list until it finds a match. An example of this type of search is used in the BinarySearchTree. There will be three different techniques of sorting which are bubble, merge, and insertion. Bubble sorting is taking the elements and placing it in ascending order (Bubble Sort, n.d.). It will start comparing at the first element and swap places accordingly until it has found its place in order. This is not the most efficient when dealing with massive amount of data because it will sort and compare an element from the start of a list. The next type of technique is merge. Merge sorting breaks down a list into similar sizes and sorts those lists before merging them back together (Merge Sort, n.d.). The last sorting technique is insertion. This technique is not very efficient as it requires to take one element and place it wherever it belongs. There is no organization and can be random. 
 
-III. Conclusion
+### III. Conclusion
 
 
 Data structures are important when creating a program. There are many kinds of data structures and these programs only showcase some types. Many programs are created to deal with great amounts of data and being able to maintain that data is key. This is where data structures come into place as it makes it easy to maintain date. Once a programmer has implemented a data structure for instance a hash table that is how the data will be structured. Once it is organized that way, it cannot be changed unless a new code is created. The biggest impact on which data structure to choose is how fast an item can be searched or removed. Using vector can take forever to search an item within a great amount of information. A hash table or a tree structure would be ideal when dealing with big data. When running HashTable or BinarySearchTree, the amount it takes to search or remove a bid can vary. This can be seen in the resulting time printed. 
