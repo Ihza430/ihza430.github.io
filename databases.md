@@ -318,15 +318,6 @@ Parker, T. (2019, June 25). 5 Essentials You Need To Know About Every Stock You 
 [Complete Restful API Code](https://github.com/Ihza430/ihza430.github.io/blob/master/database/restful)
 
 ```
-def insert_document(document): #define for inserting documents
- #inserts document into collection stocks
-  try: result=collection.insertOne(document)
-
-  except ValidationError as ve: 
-    abort(400, str(ve)) 
-  
-  return result
-
 @route('/create', method='POST') 
 def create_handler(): #define what to do for creating through URL commands
   data = request.body.readline() 
@@ -342,15 +333,8 @@ def create_handler(): #define what to do for creating through URL commands
       abort(400, str(ve))
  
   return json.loads(json.dumps(data, indent=4, default=json_util.default))
-
-def get_document(key, value): #define for getting document 
- #retrieves document that matches key/value pair
-  document = collection.find_one({key:value})
-  if not document: 
-    abort(404, 'No document matches') 
-  
-  return document
-
+```
+```
 @route('/read', method='GET')
 def read_handler(): #define what to do for reading through URL command
 
@@ -360,17 +344,8 @@ def read_handler(): #define what to do for reading through URL command
     abort(404, 'No document with Ticker : %s' % request.query.ticker)
     
   return json.loads(json.dumps(result, indent=4, default=json_util.default))
-
-#define for updating document
-def update_document(key, value, document): 
-  #updates document that matches key/value pair and setsthe document value
-  result = collection.update({key:value},{ '$set': document }, 
-  upsert=False,multi=False) 
-  if not result: 
-    abort(404, 'No document with %s : %s' % key,value)
-    
-  return json.loads(json.dumps(result, indent=4, default=json_util.default)) 
-
+```
+```
 @route('/update', method='GET')
 def update_handler(): #define what to do for updating through URL command
   doc = get_document("Ticker",request.query.ticker) #utilizes get_document
@@ -380,15 +355,8 @@ def update_handler(): #define what to do for updating through URL command
     abort(404, 'update error %s' % request.query.result)
     
   return json.loads(json.dumps(entity, indent=4, default=json_util.default)) 
-
-def delete_document(key, value): #define for deleting document
-#finds document to delete that match the key/value pair
-  result = collection.remove({key:value}) 
-  if not result: 
-    abort(404, 'No document with %s : %s' % key,value) 
-  
-  return json.loads(json.dumps(result, indent=4, default=json_util.default)) 
-
+```
+```
 @route('/delete', method='GET')
 def delete_handler(): #define what to do for deleting through URL command
 #utilizes delete_document
@@ -397,7 +365,8 @@ def delete_handler(): #define what to do for deleting through URL command
     abort(404, 'No document with %s : %s' % key,value)
     
   return json.loads(json.dumps(result, indent=4, default=json_util.default)) 
-
+```
+```
 @route('/report', method='GET')
 #define what to do for getting a report on specific documents
 def report_handler(): 
@@ -408,8 +377,8 @@ def report_handler():
     abort(404, 'No document with Ticker : %s' % request.query.ticker)
     
   return json.loads(json.dumps(result, indent=4, default=json_util.default))
-
-  
+```
+```
 @route('/top5', method ='GET')
 #define what to do to get the top 5 stocks within an industry
 def top_stocks(): 
@@ -423,8 +392,4 @@ def top_stocks():
     print doc
   return json.loads(json.dumps(doc, indent=4, default=json_util.default))
                             
-if __name__ == '__main__': #declare instance of request
-    #app.run(debug=True)
-    run(host='localhost', port=8080)
-
 ```
