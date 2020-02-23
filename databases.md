@@ -237,6 +237,8 @@ A.	Restful API
 
 
 Restful API allows clients to interact with the database through curl commands. Because of the reusability of the code, clients can enter their own queries when using the curl commands. 
+
+
 B.	CRUD Functionality
 
 
