@@ -23,4 +23,4 @@ Data Structures and Algorithms shows examples and explanations of thirteen types
 The artifact for databases is a user documentation for MongoDB and RESTful API and a data analysis and recommendation for stocks. The database includes information on thousands of companies and their stocks. The code is written in mongo, pymongo, and python. This provided an example of database management and ability of data mining. This coincides with the topics of database and communicating with stakeholders. 
 
 
-[Code Review](/code_review.html) | [Databases](/databases.html) | [Software Engineering & Design](/software_design.html) | [Data Structures & Algorithms](/data_structures.html) 
+#### [Code Review](/code_review.html) | [Databases](/databases.html) | [Software Engineering & Design](/software_design.html) | [Data Structures & Algorithms](/data_structures.html) 
