@@ -2,6 +2,7 @@
 
 ### [Home](https://ihza430.github.io)  | [Code Review](/code_review.html) | [Databases](/databases.html) | [Software Engineering & Design](/software_design.html) | [Data Structures & Algorithms](/data_structures.html) 
 ---
+<a name="tp"></a>
 - [Narrative](#an)
 - [Enhancement Text](#en)
 - [Code](#co)
@@ -17,6 +18,8 @@ The reason for the inclusion of these artifacts is that each one shows an aspect
 The expected course outcomes for this enhancement was met. Knowing the process and understanding allows for better collaboration among peers and third parties. It helps understand everyone’s individual role and help make the best decision within the field. The testing aspect of this artifact is crucial for the second outcome that was laid out which was looking for vulnerabilities, mitigating design flaws, privacy and security. The aspect of preparing before coding and making sure documentation is accurate helps avoid flaws or vulnerabilities before they even happen. 
   
 Reflecting on the process of enhancing this artifact, there were many things to consider. The whole software process is not simple as what it might seem on a chart. Though I went through a simplified process, I still felt overwhelmed by the whole thing. There are so many steps and I had to take some of those steps multiple times to get a product that a client would be happy to release. I can only imagine if I had to code from scratch. The allotted time for this class would not be enough but I am also one person. The software process is a collaborative effort and that is really an important aspect I was not able to experience. Though I understand the importance and imagine how I would collaborate in real life having firsthand experience would be the best. The other important thing I learned about myself is that I am still struggling to write code. I surely have gotten better at it and understand the concepts involved. When I was fixing the errors, it did take me awhile and a lot of trial and error to get them to function. But I know I should be a lot more confident in my ability to code. Going through my enhancement, my code lacks comments throughout and doing this enhancement let me be more aware of that as a developer. 
+
+[Back to Top](#tp)
 
 <a name="en"></a>
 ## Enhancement Text
@@ -47,6 +50,8 @@ References
 Cobb, C. G. (2015-01-26). The Project Manager's Guide to Mastering Agile: Principles and Practices for an Adaptive Approach, 1st Edition. [MBS Direct]. Retrieved from https://mbsdirect.vitalsource.com/#/books/9781118991770/
 
 Porter, J. (2006, November 14). The Freedom of Fast Iterations: How Netflix Designs a Winning Web Site. Retrieved from https://articles.uie.com/fast_iterations
+
+[Back to Top](#tp)
 
 
 <a name="co"></a>
@@ -183,6 +188,8 @@ private static void addPerson(boolean addDoctor, Scanner scanner) {
 }
 ```
 
+[Back to Code](#co)
+
 <a name="mo"></a>
 ### Models
 
@@ -195,16 +202,24 @@ private static void addPerson(boolean addDoctor, Scanner scanner) {
 7. [Patient History](https://github.com/Ihza430/ihza430.github.io/blob/master/software/models/patienthistory)
 8. [Treatment](https://github.com/Ihza430/ihza430.github.io/blob/master/software/models/treatment)
 
+[Back to Code](#co)
+
 <a name="pr"></a>
 ### Prompt
 
 1. [Medical Record Prompt](https://github.com/Ihza430/ihza430.github.io/blob/master/software/prompts/medicalrecord)
+
+[Back to Code](#co)
 
 <a name="sr"></a>
 ### Services
 
 1. [Doctor Service](https://github.com/Ihza430/ihza430.github.io/blob/master/software/services/doctor)
 2. [Medical Record Service](https://github.com/Ihza430/ihza430.github.io/blob/master/software/services/medicalrecord)
+
+[Back to Code](#co)
+
+[Back to Top](#tp)
 
 
 #### [Home](https://ihza430.github.io)  | [Code Review](/code_review.html) | [Databases](/databases.html) | [Software Engineering & Design](/software_design.html) | [Data Structures & Algorithms](/data_structures.html) 
