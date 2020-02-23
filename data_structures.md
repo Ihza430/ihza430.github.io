@@ -3,6 +3,7 @@
 ### [Home](https://ihza430.github.io)  | [Code Review](/code_review.html) | [Databases](/databases.html) | [Software Engineering & Design](/software_design.html) | [Data Structures & Algorithms](/data_structures.html) 
 
 ---
+<a name="tp"></a>
 - [Narrative](#an)
 - [Enhancement Text](#en)
 - [Code](#co)
@@ -15,6 +16,9 @@ The artifact I choose was the final project from CS 260 Data Structures and Algo
 The course outcome that aligns with it the most is “design and evaluate computing solutions that solve a given problem using algorithmic principles and computer science practices and standards appropriate to its solution, while managing the trade-offs involved in design choices.” This enhancement will accomplish this outcome because I will be going into detail as well as showing how each new algorithm or structure will be used. I will also exemplify the uses of the data structures and algorithms which will show my knowledge of making design choices. Another course outcome is “demonstrate an ability to use well-founded and innovative techniques, skills, and tools in computing practices for the purpose of implementing computer solutions that deliver value and accomplish industry-specific goals.” This artifact will show my ability to use the programming language C++ and data structures and algorithms accordingly. This ability will help accomplish industry goals like managing large amounts of data. 
 
 Originally, I had planned to include more data structures and algorithms into this artifact. As research and planning took place for this artifact, I began to realize that many of the data structures and algorithms I had planned to use are very similar to the ones I have already investigated previously. I decided to improve on my previous code as I thought it was enough in showing my knowledge in data structures and algorithms. I did try to implement another sorting technique in my code but had trouble implementing it correctly. In my opinion, it would be better to make my original code better than to implement a code that I was not confident in showing. As for the additional data structures and algorithms, I explained and detailed them further as well as show some examples of them. This artifact was more about perfecting and adding additional knowledge to the original artifact. 
+
+[Back to Top](#tp)
+
 
 <a name="en"></a>
 ## Enhancement Text
@@ -65,6 +69,9 @@ Merge Sort Algorithm in Data Structures. (n.d.). Retrieved from https://www.w3sc
 
 Searching Techniques in Data Structures. (n.d.). Retrieved from https://www.w3schools.in/data-structures-tutorial/searching-techniques/
 Zybooks: CS-260: Data Structures. (n.d.). Retrieved from https://learn.zybooks.com/zybook/SNHUCS260AY16-17
+
+[Back to Top](#tp)
+
 
 <a name="co"></a>
 ## Code
@@ -213,6 +220,7 @@ void selectionSort(vector<Bid>& bids) {
     }
 
  ```
+ [Back to Code](#co)
 
 <a name="bs"></a>
 ### Binary Search Tree 
@@ -440,6 +448,8 @@ case 4:
 
 ```
 
+[Back to Code](#co)
+
 <a name="ht"></a>
 ### Hash Table
 
@@ -648,6 +658,8 @@ case 4:
 	return 0;
 }
 ```
+[Back to Code](#co)
 
+[Back to Top](#tp)
 
 #### [Home](https://ihza430.github.io)  | [Code Review](/code_review.html) | [Databases](/databases.html) | [Software Engineering & Design](/software_design.html) | [Data Structures & Algorithms](/data_structures.html) 
