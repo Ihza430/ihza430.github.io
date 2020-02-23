@@ -9,12 +9,6 @@
 
 
 <a name="an"></a>
-
-
-
-
-
-
 ## Narrative
 
 The artifact I chose is a combination of final projects from CS 250: Software Development Lifecycle, IT 315: Object Oriented Analysis and Design, and CS 320: Software Testing, Automation, and Quality. The code part is directly from CS 320: Software Testing, Automation, and Quality. It was created October 2019. This artifact showcased the different testing methods done on a code for a medical application in Java. As for the other two final projects, I will take aspects of them and show the process of software design. CS 250: Software Development Lifecycle was created on June 2018. It showed the process of Agile development and the roles that are within it. IT 315: Object Oriented Analysis and Design was created on March 2019. It showed the different designs to help establish and organize the client requirements for an app to aid developers. This included sequence and use case diagrams. 
