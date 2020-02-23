@@ -205,3 +205,6 @@ private static void addPerson(boolean addDoctor, Scanner scanner) {
 
 1. [Doctor Service](https://github.com/Ihza430/ihza430.github.io/blob/master/software/services/doctor)
 2. [Medical Record Service](https://github.com/Ihza430/ihza430.github.io/blob/master/software/services/medicalrecord)
+
+
+#### [Home](https://ihza430.github.io)  | [Code Review](/code_review.html) | [Databases](/databases.html) | [Software Engineering & Design](/software_design.html) | [Data Structures & Algorithms](/data_structures.html) 
