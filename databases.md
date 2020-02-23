@@ -3,6 +3,7 @@
 ### [Home](https://ihza430.github.io)  | [Code Review](/code_review.html) | [Databases](/databases.html) | [Software Engineering & Design](/software_design.html) | [Data Structures & Algorithms](/data_structures.html) 
 
 ---
+<a name="tp"></a>
 - [Narrative](#an)
 - [Enhancement Text](#en)
 - [Code](#co)
@@ -15,6 +16,8 @@ The reason I choose this item for this category because it directly worked with 
 The course outcomes that closely aligns to this enhancement are “demonstrate an ability to use well-founded and innovative techniques, skill, and tools, in computing practices for the purpose of implementing computer solutions that deliver value and accomplish industry-specific goals” and “design, develop, and deliver professional-quality oral, written, and visual communications that are coherent, technically sounds and appropriately adapted to specific audiences and contexts.” The reason why this enhancement aligns with the first outcome stated because MongoDB is being used which is skill to give insight to the internal stakeholders. A report will be made to inform these stakeholders and that requires professional-quality written and visual communications that is specific to the audience. 
 
 Looking at the process of enhancing at this artifact, I did have some trouble. To successfully data mining, I had to create new aggregate statements to be able to get the information I needed. Aggregating was not my strong suit but as I was doing it more and more, I learned how to do it properly and really understand what each part of the statement means. The major challenge is determining what information I needed. I do not know much about stocks or investing. For this artifact, quite a bit of research was needed to understand what would be beneficial to stakeholders in terms of looking at stocks. 
+
+[Back to Top](#tp)
 
 <a name="en"></a>
 ## Enhancement Text
@@ -68,6 +71,8 @@ This is like the first index, but more fields are added which makes it a Compoun
 
 getIndexes() -> gets all the indexes and information on them
 This is to ensure that the following indexes that were made were created properly. 	
+
+[Back to Enhancement Text](#en)
 
 <a name="dm"></a>
 ### II. Document Manipulation
@@ -160,6 +165,8 @@ Remove -> command to remove document
 
 When trying to find the document with the Ticker value of TEST, there was no results which is to be expected since the document has been deleter. 
 
+[Back to Enhancement Text](#en)
+
 <a name="dr"></a>
 ### III. Document Retrieval
 
@@ -229,6 +236,8 @@ Aggregate -> uses to specify that we will be aggregating
 
 {“$group”:{_id:”$Industry”, totalShares:{$sum:”$Share Outstanding}}}) -> specifies that the matching documents will be grouped based on the Industry. For example, all the documents in the healthcare sector that are within the biotechnology industry will be grouped together. The share outstanding key will be summed up from all the documents within that grouping. So for instance if there are three documents within that grouping and have share outstanding of the 3, 4, and 5, the total share will be 12. 
 
+[Back to Enhancement Text](#en)
+
 <a name="ap"></a>
 ### IV. Advanced Programming
 
@@ -276,6 +285,7 @@ ii. Five Top Stocks
 <img src="images/databases/File33.png" alt="Image 33">
 <img src="images/databases/File34.png" alt="Image 34">
  
+[Back to Enhancement Text](#en)
 
 <a name="da"></a>
 ### V. Data Mining
@@ -295,11 +305,14 @@ The results below are the highest projected growth in the next 5 years. The comp
  
 Data mining is all about gathering information and determining what it means. If the data in the databases were just looked at it would mean nothing. Once the data is analyzed, patterns and relationships can be seen. For instance a relatioship between price and projected growth can help a stakeholder decided whether they want to invest in a particular stock. 
 
+[Back to Enhancement Text](#en)
 
 References
 
 
 Parker, T. (2019, June 25). 5 Essentials You Need To Know About Every Stock You Buy. Retrieved from https://www.investopedia.com/financial-edge/0411/5-essential-things-you-need-to-know-about-every-stock-you-buy.aspx.
+
+[Back to Top](#tp)
 
 <a name="co"></a>
 ## Code
@@ -418,6 +431,8 @@ def top_stocks():
   (json.dumps(doc, indent=4, default=json_util.default))
                             
 ```
+[Back to Code](#co)
 
+[Back to Top](#tp)
 
 #### [Home](https://ihza430.github.io)  | [Code Review](/code_review.html) | [Databases](/databases.html) | [Software Engineering & Design](/software_design.html) | [Data Structures & Algorithms](/data_structures.html) 
